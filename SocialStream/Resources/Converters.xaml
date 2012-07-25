@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:SocialStream.Converters">
+
+  <converters:RelativeTimeConverter x:Key="RelativeTimeConverter" />
+  <converters:VisibilityConverter x:Key="VisibilityConverter" />
+  <converters:TitleCaseConverter x:Key="TitleCaseConverter" />
+  <converters:BooleanConverter x:Key="BooleanConverter" />
+  <converters:MultiVisibilityConverter x:Key="MultiVisibilityConverter" />
+
+</ResourceDictionary>

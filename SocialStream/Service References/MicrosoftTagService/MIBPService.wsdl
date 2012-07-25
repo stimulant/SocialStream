@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:i0="http://www.ws.tag.microsoft.com/ver1" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="MIBPService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://www.ws.tag.microsoft.com/ver1" location="https://ws.tag.microsoft.com/Service.wsdl" />
+  <wsdl:types />
+  <wsdl:binding name="BasicHttpBinding_IMIBPContract" type="i0:IMIBPContract">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateCategory">
+      <soap:operation soapAction="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/CreateCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="SenderFaultFault">
+        <soap:fault use="literal" name="SenderFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UserAuthFaultFault">
+        <soap:fault use="literal" name="UserAuthFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ReceiverFaultFault">
+        <soap:fault use="literal" name="ReceiverFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="CategoryFaultFault">
+        <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCategory">
+      <soap:operation soapAction="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/UpdateCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="SenderFaultFault">
+        <soap:fault use="literal" name="SenderFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="CategoryFaultFault">
+        <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UserAuthFaultFault">
+        <soap:fault use="literal" name="UserAuthFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ReceiverFaultFault">
+        <soap:fault use="literal" name="ReceiverFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ActivateCategory">
+      <soap:operation soapAction="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/ActivateCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="UserAuthFaultFault">
+        <soap:fault use="literal" name="UserAuthFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SenderFaultFault">
+        <soap:fault use="literal" name="SenderFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ReceiverFaultFault">
+        <soap:fault use="literal" name="ReceiverFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="CategoryFaultFault">
+        <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="PauseCategory">
+      <soap:operation soapAction="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/PauseCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReceiverFaultFault">
+        <soap:fault use="literal" name="ReceiverFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UserAuthFaultFault">
+        <soap:fault use="literal" name="UserAuthFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SenderFaultFault">
+        <soap:fault use="literal" name="SenderFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="CategoryFaultFault">
+        <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTag">
+      <soap:operation soapAction="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/CreateTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReceiverFaultFault">
+        <soap:fault use="literal" name="ReceiverFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UserAuthFaultFault">
+        <soap:fault use="literal" name="UserAuthFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SenderFaultFault">
+        <soap:fault use="literal" name="SenderFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="CategoryFaultFault">
+        <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="TagFaultFault">
+        <soap:fault use="literal" name="TagFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ActivateTag">
+      <soap:operation soapAction="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/ActivateTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="UserAuthFaultFault">
+        <soap:fault use="literal" name="UserAuthFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SenderFaultFault">
+        <soap:fault use="literal" name="SenderFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ReceiverFaultFault">
+        <soap:fault use="literal" name="ReceiverFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="CategoryFaultFault">
+        <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="TagFaultFault">
+        <soap:fault use="literal" name="TagFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="PauseTag">
+      <soap:operation soapAction="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/PauseTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CategoryFaultFault">
+        <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ReceiverFaultFault">
+        <soap:fault use="literal" name="ReceiverFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="TagFaultFault">
+        <soap:fault use="literal" name="TagFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UserAuthFaultFault">
+        <soap:fault use="literal" name="UserAuthFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SenderFaultFault">
+        <soap:fault use="literal" name="SenderFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTag">
+      <soap:operation soapAction="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/DeleteTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="TagFaultFault">
+        <soap:fault use="literal" name="TagFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SenderFaultFault">
+        <soap:fault use="literal" name="SenderFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="CategoryFaultFault">
+        <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UserAuthFaultFault">
+        <soap:fault use="literal" name="UserAuthFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ReceiverFaultFault">
+        <soap:fault use="literal" name="ReceiverFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTag">
+      <soap:operation soapAction="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/UpdateTag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="SenderFaultFault">
+        <soap:fault use="literal" name="SenderFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ReceiverFaultFault">
+        <soap:fault use="literal" name="ReceiverFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="CategoryFaultFault">
+        <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UserAuthFaultFault">
+        <soap:fault use="literal" name="UserAuthFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="TagFaultFault">
+        <soap:fault use="literal" name="TagFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetTagByTagName">
+      <soap:operation soapAction="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetTagByTagName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="SenderFaultFault">
+        <soap:fault use="literal" name="SenderFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ReceiverFaultFault">
+        <soap:fault use="literal" name="ReceiverFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="CategoryFaultFault">
+        <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UserAuthFaultFault">
+        <soap:fault use="literal" name="UserAuthFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="TagFaultFault">
+        <soap:fault use="literal" name="TagFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetBarcode">
+      <soap:operation soapAction="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetBarcode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="UserAuthFaultFault">
+        <soap:fault use="literal" name="UserAuthFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="CategoryFaultFault">
+        <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BarCodeFaultFault">
+        <soap:fault use="literal" name="BarCodeFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="TagFaultFault">
+        <soap:fault use="literal" name="TagFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SenderFaultFault">
+        <soap:fault use="literal" name="SenderFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ReceiverFaultFault">
+        <soap:fault use="literal" name="ReceiverFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetTagId">
+      <soap:operation soapAction="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetTagId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReceiverFaultFault">
+        <soap:fault use="literal" name="ReceiverFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="TagFaultFault">
+        <soap:fault use="literal" name="TagFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UserAuthFaultFault">
+        <soap:fault use="literal" name="UserAuthFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SenderFaultFault">
+        <soap:fault use="literal" name="SenderFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="CategoryFaultFault">
+        <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MIBPService">
+    <wsdl:port name="BasicHttpBinding_IMIBPContract" binding="tns:BasicHttpBinding_IMIBPContract">
+      <soap:address location="https://ws.tag.microsoft.com/Service.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

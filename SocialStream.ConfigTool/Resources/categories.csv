@@ -1,0 +1,297 @@
+Name,Id,Query
+Arts & Entertainment,,
+Entertainment Agencies & Bureaus,984,agency
+Museums,1785,museum
+"Trade Shows, Expositions & Fairs",2699,show
+Adult Entertainment,10002,entertainment
+Amusement,10004,amusement
+Art,10012,art
+Clubs,10028,club
+Costumes,10033,costume
+Dance,10036,dance
+Escort Services,10046,escort
+Gambling,10051,gaming
+General Entertainers,10056,entertainment
+Movies,10064,theater
+Music,10073,music
+Party & Event Planning,10100,event
+Theater,10122,theater
+Ticket Sales,10129,tickets
+Automotive & Vehicles,,
+Auto Wreckers,2917,auto
+Aircraft,10133,air
+Auto Parts & Repair,10142,auto
+Auto Care & Accessories,10194,auto
+General Auto Services,10215,auto
+Boats,10254,boats
+Car & Truck Sales,10282,auto
+Motorcycles & Motor Scooters,10299,motorcycle
+Recreational Vehicles & Campers,10312,rv
+Trailers,10328,trailer
+Business to Business,,
+Environmental & Ecological Services,987,environment
+Agriculture & Food,10362,agriculture
+B2B Health & Beauty,10678,health
+B2B Office Supplies & Equipment,10925,equipment
+Business Services,12001,services
+Manufacturing & Supplies,13436,supplies
+Energy & Mining,13449,mining
+Storage & Transportation,13455,transportation
+B2B Communications & Advertising,13480,advertising
+Security & Facilities,13482,security
+B2B Science & Technology,13483,science
+B2B Computers & Electronics,13484,computers
+B2B Entertainment & Recreation,13485,entertainment
+Computers & Technology,,
+Computer Service & Repair,26,computer
+Computer Dealers,48,computer
+Radio Communication Equipment,234,radio
+Electronic Equipment & Service,297,electronics
+Internet Products & Services,1442,internet
+Sound Systems & Equipment,2483,sound
+Cable Television & Satellite,10832,cable
+Cellular & Wireless,10840,cellular
+Computer & Web Publishing,10852,internet
+Computer Consulting & System Design,10855,computer
+Computer Networking & Cabling,10869,network
+Computer Software Services,10879,software
+Computer Training,10886,training
+Electronic Data Services,10906,data
+Telecommunications & Telephone Services,10957,telecom
+Televisions & Radios,10984,television
+Video Equipment & Supplies,10994,video
+Video Games,11010,games
+Education ,,
+Special Education Schools,2354,school
+General Interest Schools,2360,school
+Adult Education,11015,school
+Colleges & Universities,11017,college
+Educational Organizations,11020,education
+Education & Teacher Services,11023,education
+Elementary Schools,11033,school
+Preschool through Kindergarten Schools,11035,school
+Parochial & Private Schools,11040,school
+Religious & Spiritual Instruction,11043,school
+Specialty Instruction,11051,school
+Tutoring,11062,tutor
+Vocational & Training Schools,11065,school
+Medical Education Schools,11593,school
+Alternative Schools & Home Schooling,13632,school
+Community & Junior Colleges,13636,college
+Junior High & Middle Schools,13637,school
+Senior High & Preparatory Schools,13638,school
+Charter Schools,83163,school
+Public Schools,83164,school
+Food & Dining,,
+Bakeries,11073,bakery
+Banquet Facilities,11076,banquet
+Beverages,11078,beverage
+Catering,11096,catering
+Cooking & Barbecue,11099,cooking
+Grocery & Food Stores,11151,grocery
+Restaurants,11168,restaurant
+"Taverns, Bars & Cocktail Lounges",11199,bar
+Government & Community ,,
+Notaries Public Services,1816,notary
+Animal Shelters & Humane Societies,11207,animal
+Associations,11210,association
+Parks & Recreation,11215,park
+Cemeteries & Memorial Parks,11220,cemetary
+Charitable Organizations,11224,charity
+Citizenship,11229,citizen
+Electric Companies,11233,electric
+Natural Gas Services,11242,gas
+Government Services,11243,government
+Historical Sites,11262,history
+Libraries,11265,library
+News,11268,news
+Parking Facilities,11274,parking
+Recycling Centers,11277,recycle
+Religious Services & Organizations,11280,church
+Sewer Services,11344,sewer
+Social Service Organizations,11347,social
+Television & Radio Stations,11371,television
+Waste Management,11374,waste
+Water Services & Equipment,11381,water
+Fire Protection,13547,fire
+Police & Sheriff,13548,police
+Chambers of Commerce,13550,commerce
+Health & Beauty,,
+Color Consultants,660,color
+Cosmetics & Perfumes,752,cosmetics
+Hospice,1358,hospice
+Medical Equipment & Supplies,1670,medical
+Abuse & Addiction Treatment,11385,treatment
+Assisted Living & Care Services,11397,services
+Alternative Medicine,11408,medical
+Day Spas,11429,spa
+Dental care,11432,dental
+Disabilities,11450,disability
+Doctors & Clinics,11460,doctor
+Eye Care,11518,eye
+First Aid,11529,medical
+Hair & Beauty,11532,salon
+Health Clubs & Fitness,11550,gym
+Hearing,11567,hearing
+Home Health Services,11575,health
+Hospitals & Medical Centers,11579,hospital
+Massage,11588,massage
+Medical Information & Referral,11637,medical
+Mental Health Services,11649,mental
+Nail Salons,11669,salon
+Nurses & Nursing Care,11672,nurse
+Physical Therapy & Rehabilitation,11683,therapy
+Skin care,11696,skin
+Tanning Salons,11702,tan
+Tattoos & Piercings,11705,tattoo
+Women's Health & Reproduction,11714,health
+Pharmacies,13070,pharmacy
+Beauty Supplies,13505,beauty
+Home & Family,,
+Home Improvement,1329,home
+Appliances,11736,appliance
+Bathrooms,11750,bath
+Closets & Closet Accessories,11759,closet
+Decks & Patios,11764,deck
+Family Services,11772,family
+Fireplaces & Heating Stoves,11801,heating
+Flooring,11805,floor
+"Heating, Plumbing & Air Systems",11816,heating
+Furniture,11819,furniture
+Gutters & Downspouts,11830,gutter
+Home Repairs & Maintenance,11833,home
+House Cleaning,11844,cleaning
+Interior Designers & Decorators,11852,interior
+Kitchens,11858,kitchen
+Laundries & Laundromats,11863,laundry
+Lawn & Garden,11866,garden
+Lighting Fixtures,11888,lighting
+Movers & Storage,11894,moving
+Pest Control,11907,pest
+Pets & Pet Supplies,11915,pet
+"Pools, Spas & Saunas",11949,pool
+Window Treatments & Coverings,11957,window
+Safety,12828,safety
+Doors & Windows,12860,door
+Homeowners Association,13572,association
+Legal & Finance,,
+Appraisers,102,appraise
+Tax Return Preparation & Filing,2596,tax
+Accounting & Bookkeeping,11974,accounting
+Auctions,11981,auction
+Bail Bonds,11983,bail
+Bankruptcy Assistance,11985,bankruptcy
+Banks & Credit Unions,11987,bank
+Check Cashing & Money Transfers,12039,check
+Coin Dealers,12042,coin
+Credit & Debt Counseling,12046,credit
+Currency Exchanges,12051,currency
+Economy,12053,economy
+Escrow Services,12056,escrow
+Financial Planning & Investment Advice,12058,financial
+Insurance,12087,insurance
+Legal Services & Assistants,12101,legal
+Loans,12146,loan
+Pawnbrokers,12152,pawn
+Detectives & Forensics,12225,detective
+Commercial Banking & Financial Services,13479,bank
+Check Printing,13526,check
+Professionals & Services,,
+Apparel Services,12185,apparel
+Audio-Visual Equipment Services,12201,audio
+Copying Services,12212,copy
+Delivery Services,12219,delivery
+Graphic Services,12246,design
+Mailing & Freight Services,12261,mail
+Paranormal Services,12289,paranormal
+Photography Services,12295,photography
+Publishers & Printers,12307,publishing
+Restoration & Repair Services,12324,repair
+Telephone Answering Services,12348,service
+Employment,12350,employment
+Inventors,13120,inventor
+Personalization Services,13129,personalization
+Real Estate & Construction,,
+Building & Construction Services,1718,construction
+Property Management & Maintenance,2175,management
+Tile Materials & Experts,2662,tile
+Utilities Construction,2773,utilities
+Specialty Rooms & Structures,12361,specialty
+Construction Site Services,12431,construction
+Wrecking & Excavating,12459,wrecking
+Contractor Equipment & Supplies,12467,supply
+Inspection Services,12513,inspection
+Surveyors,12529,survey
+Real Estate Services,12549,real estate
+Buildings,12572,building
+HVAC & Energy Conservation,13487,hvac
+Drilling & Pumping,13488,drill
+Doors & Windows Construction,13489,door
+"Grading, Foundations & Paving",13490,paving
+"Interior Walls, Ceilings & Floors Construction",13491,interior
+Landscape & Water Construction,13492,landscape
+Metal Materials & Experts,13493,metal
+Roofing & Siding Construction,13494,roof
+Stone & Masonry,13495,stone
+Wood Materials & Experts,13496,wood
+Security & Safety,13497,security
+Sports & Recreation,,
+Hot Air Balloons,262,balloon
+Skateboards & Equipment,2451,skate
+Archery & Shooting,12640,archery
+Bicycles,12645,bicycle
+Bowling,12650,bowling
+Crafts & Hobbies,12653,craft
+Equestrian,12654,equestrian
+General Sports,12670,sport
+Golf,12676,golf
+Gymnastics,12690,gymnastics
+Horseshoes,12695,horseshoes
+Hunting & Fishing,12698,hunting
+Martial Arts & Self Defense,12706,martial
+Outdoor Recreation,12713,outdoor
+Paintball,12719,paintball
+Parachuting & Parasailing,12722,parachute
+Pool & Billiards,12726,pool
+Racing,12731,racing
+Recreation Centers,12733,recreation
+Skating,12737,skate
+Snow Sports,12742,snow
+Sporting Goods,12750,sport
+Swimming & Watersports,12755,swim
+Team Sports,12767,sport
+Tennis & Racquet Sports,12781,tennis
+Country Clubs,13571,club
+Shopping,,
+"Cigar, Cigarette & Tobacco Dealers",600,tobacco
+Jewelry,1471,jewelry
+Stationary,2515,stationary
+Antiques,12874,antique
+Apparel,12876,apparel
+Books,12912,books
+Cultural Goods,12916,goods
+Floral & Decor,12922,floral
+Hardware & Tools,12949,tools
+Housewares,12961,home
+Stores & Services,12987,shopping
+Toys & Games Stores,13018,toys
+Travel,,
+"Airports, Flying Fields & Services",58,air
+Car Rentals,216,car
+Limousine Service,1556,limousine
+Taxicab Service,2597,taxi
+Public Transit,2717,transit
+Transportation Providers,2722,transportation
+Aircraft Charter & Rental Companies,13311,air
+Airlines & Airline Ticket Agencies,13316,air
+Boat Charter & Rental Companies,13324,boats
+Bus Lines & Charters,13327,bus
+Campgrounds & RV Parks,13331,camp
+Cruises,13333,cruise
+Guides & Sightseeing,13336,guide
+Hotels & Accommodations,13344,hotel
+Resorts,13354,resort
+Specialty Transportation,13357,transportation
+Trains,13360,train
+Travel Accessories,13364,travel
+Travel Agencies & Bureaus,13635,travel

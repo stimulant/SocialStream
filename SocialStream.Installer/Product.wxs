@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Define some installer-wide variables. -->
+<?define UpgradeCode="BD6A935B-B751-44D0-9EE7-0E976F605DB6"?>
+<?define CurrentVersion="2.0.0"?>
+
+<!-- Modify these lines to suit the needs of the current app. -->
+<?define WelcomeDialogTitle="{\WixUI_Font_Bigger}Welcome to the [ProductName] [ProductVersion] Setup Wizard"?>
+<?define WelcomeDialogText="The Setup Wizard will guide you through the installation of [ProductName] on your computer. Click Next to continue or Cancel to exit the Setup Wizard."?>
+
+<?define OptInDescription="In single-application mode, the application starts immediately and the Launcher menu and access points are disabled, enabling the application to be the complete user experience."?>
+<?define OptInText="Enable single-application mode."?>
+
+<!-- Modify these lines to add an at-exit checkbox that launches a specific URL. -->
+<?define AtExitText="Launch the configuration tool."?>
+
+<!-- Begin actual WiX goings-on. -->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Language="1033" UpgradeCode="$(var.UpgradeCode)"
+           Name="Social Stream for Microsoft® Surface®" Version="$(var.CurrentVersion)" Manufacturer="Microsoft Corporation">
+    <Package InstallerVersion="200" Compressed="yes" />
+
+    <!-- Add support for Major version upgrades. Must modify the first three fields as MSI ignores the fourth field. -->
+    <Property Id="OLDVERSIONBEINGUPGRADED" Secure="yes"/>
+    <Upgrade Id="$(var.UpgradeCode)">
+      <UpgradeVersion Minimum="0.0.1" IncludeMinimum="yes" Maximum="$(var.CurrentVersion)" IncludeMaximum="no" Property="OLDVERSIONBEINGUPGRADED"/>
+      <UpgradeVersion Minimum="$(var.CurrentVersion)" OnlyDetect="yes" Property="OUTOFORDERINSTALLATION"/>
+    </Upgrade>
+
+    <!-- Define Launch Conditions which abort the install if not met, and error messages. -->
+
+    <!-- Do not allow out-of-order upgrades (e.g. installing v1 after installing v2). -->
+    <Condition Message="A newer version of [ProductName] is already installed.">NOT OUTOFORDERINSTALLATION</Condition>
+
+    <!-- Check for the proper version of Surface. -->
+    <Property Id="SURFACEVERSIONHKLM">
+      <!-- The RegistrySearch will put the value of the specified Key in the containing Property. -->
+      <RegistrySearch Id="SurfaceVersionRegistryKeyHKLM" Root="HKLM" Key="SOFTWARE\Microsoft\Surface\v2.0" Type="raw" Name="FileVersion"/>
+    </Property>
+    <Property Id="SURFACEVERSIONHKCU">
+      <!-- The RegistrySearch will put the value of the specified Key in the containing Property. -->
+      <RegistrySearch Id="SurfaceVersionRegistryKeyHKCU" Root="HKCU" Key="SOFTWARE\Microsoft\Surface\v2.0" Type="raw" Name="FileVersion"/>
+    </Property>
+
+    <!-- Install sequencing.  This is mostly boiler plate to ensure that we handle upgrades
+         and launch conditions correctly.  Custom actions and other such things would also
+         go here if they become necessary. -->
+
+    <!-- Specify the order in which install actions occur. -->
+    <InstallExecuteSequence>
+      <FindRelatedProducts Before="LaunchConditions"/>
+      <RemoveExistingProducts After="InstallInitialize"/>
+    </InstallExecuteSequence>
+
+    <!-- Specify the order in which we want install UI to occur. -->
+    <InstallUISequence>
+      <FindRelatedProducts Before="LaunchConditions" />
+      <Show Dialog="CustomWelcomeDlg" Before="ProgressDlg">NOT Installed</Show>
+    </InstallUISequence>
+
+    <!-- Installation Media and Components. -->
+
+    <!-- Specify Media.  Boilerplate. -->
+    <Media Id="1" Cabinet="SocialStream.cab" EmbedCab="yes" />
+
+    <!-- Specify installation directory hierarchy and file destinations. -->
+    <Directory Id="TARGETDIR" Name="SourceDir">
+
+      <!-- Create a folder in the start menu for shortcuts. -->
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="Social Stream for Microsoft Surface">
+          <Component Id="ApplicationShortcut" Guid="822A26AF-5231-4EDA-A18D-5DF15020BD94">
+            <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+            <RegistryValue Root="HKCU" Key="HKEY_CURRENT_USER\SOFTWARE\Microsoft\SocialStream" Name="ConfigInstalled" Type="integer" Value="1" KeyPath="yes"/>
+          </Component>
+        </Directory>
+      </Directory>
+
+      <!-- Install the app. -->
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLLOCATION" Name="Social Stream for Microsoft Surface">
+          <Component Id="ProductComponent" Guid="4740357A-69D3-4626-A0F7-D0667C93A2CE">
+            <File Id="SocialStream.exe" Name="SocialStream.exe" Source="../SocialStream/bin/Release/SocialStream.exe">
+              <Shortcut Id="ApplicationStartMenuShortcut"
+                        Name="Social Stream for Microsoft® Surface®"
+                        Description="View the latest from Twitter, Flickr, and news feeds."
+                        Directory="ApplicationProgramsFolder"
+                        WorkingDirectory="INSTALLLOCATION"
+                        Advertise="yes">
+                <Icon Id="SocialStream.exe" SourceFile="../SocialStream/bin/Release/SocialStream.exe"/>
+              </Shortcut>
+            </File>
+            <File Id="SocialStream.xml" Name="SocialStream.xml" Source="../SocialStream/bin/Release/SocialStream.xml" />
+            <File Id="SocialStream.exe.config" Name="SocialStream.exe.config" Source="../SocialStream/bin/Release/SocialStream.exe.config" />
+            <File Id="SocialStream.exe.config.default" Name="SocialStream.exe.config.default" Source="../SocialStream/bin/Release/SocialStream.exe.config.default" />
+            <File Id="Profanity.txt" Name="Profanity.txt" Source="../SocialStream/bin/Release/Profanity.txt" />
+            <File Id="Profanity.txt.default" Name="Profanity.txt.default" Source="../SocialStream/bin/Release/Profanity.txt.default" />
+            <File Id="FeedProcessor.dll" Name="FeedProcessor.dll" Source="../SocialStream/bin/Release/FeedProcessor.dll"/>
+            <File Id="Microsoft.Expression.Interactions.dll" Name="Microsoft.Expression.Interactions.dll" Source="../SocialStream/bin/Release/Microsoft.Expression.Interactions.dll"/>
+            <File Id="System.Windows.Interactivity.dll" Name="System.Windows.Interactivity.dll" Source="../SocialStream/bin/Release/System.Windows.Interactivity.dll"/>
+            <File Id="XAMLConverter.dll" Name="XAMLConverter.dll" Source="../SocialStream/bin/Release/XAMLConverter.dll"/>
+
+          </Component>
+          <Component Id="ConfigComponent" Guid="B0A1F475-4C8E-4238-B801-DEB643C3740D">
+            <File Id="SocialStream.ConfigTool.exe" Name="SocialStream.ConfigTool.exe" Source="../SocialStream/bin/Release/SocialStream.ConfigTool.exe">
+              <Shortcut Id="ConfigStartMenuShortcut"
+                        Name="Social Stream Configuration Tool"
+                        Directory="ApplicationProgramsFolder"
+                        WorkingDirectory="INSTALLLOCATION"
+                        Advertise="yes">
+                <Icon Id="SocialStream.ConfigTool.exe" SourceFile="../SocialStream/bin/Release/SocialStream.ConfigTool.exe"/>
+              </Shortcut>
+            </File>
+
+            <File Id="SocialStream.ConfigTool.exe.config" Name="SocialStream.ConfigTool.exe.config" Source="../SocialStream/bin/Release/SocialStream.ConfigTool.exe.config" />
+          </Component>
+          <Directory Id="RESOURCESDIR" Name="Resources">
+            <Component Id="ResourcesComponent" Guid="4A041EDF-053E-4F00-9668-819E88D85B1C">
+              <File Id="WindowBackground.png" Name="WindowBackground.png" Source="../SocialStream/bin/Release/Resources/WindowBackground.png" />
+              <File Id="WindowBackground.png.default" Name="WindowBackground.png.default" Source="../SocialStream/bin/Release/Resources/WindowBackground.png.default" />
+              <File Id="WindowBackground_Vertical.png" Name="WindowBackground_Vertical.png" Source="../SocialStream/bin/Release/Resources/WindowBackground_Vertical.png" />
+              <File Id="WindowBackground_Vertical.png.default" Name="WindowBackground_Vertical.png.default" Source="../SocialStream/bin/Release/Resources/WindowBackground_Vertical.png.default" />
+              <File Id="icon.png" Name="icon.png" Source="../SocialStream/bin/Release/Resources/icon.png" />
+            </Component>
+            <Directory Id="AUDIODIR" Name="Audio">
+              <Component Id="AudioComponent" Guid="F781892F-21C5-44AD-A5C9-85DB1687030A">
+                <File Id="Audio.xgs" Name="Audio.xgs" Source="../SocialStream/bin/Release/Resources/Audio/Audio.xgs" />
+                <File Id="Audio.xsb" Name="Audio.xsb" Source="../SocialStream/bin/Release/Resources/Audio/Audio.xsb" />
+                <File Id="Audio.xwb" Name="Audio.xwb" Source="../SocialStream/bin/Release/Resources/Audio/Audio.xwb" />
+              </Component>
+            </Directory>
+          </Directory>
+        </Directory>
+
+      </Directory>
+
+      <!-- Install a shortcut to the program information file to make it show up in the Surface launcher. -->
+      <Directory Id="CommonAppDataFolder" Name="ProgramData">
+        <Directory Id="MicrosoftProfile" Name="Microsoft">
+          <Directory Id="SurfaceProfile" Name="Surface">
+            <Directory Id="V2Profile" Name="v2.0">
+              <Directory Id="ProgramsProfile" Name="Programs">
+                <Component Id="ApplicationInfoComponent" Guid="32E8AB34-7062-41E0-BD3F-DDF07B962375">
+                  <Shortcut Id="ApplicationInfoShortcut" Name="SocialStream.xml" Target="[INSTALLLOCATION]SocialStream.xml"/>
+                  <CreateFolder Directory="ProgramsProfile" />
+                </Component>
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+
+      <!-- Set the shell to run in Single Application Mode -->
+      <Component Id="SingleApplicationModeComponent" Guid="960FA1A8-3CE0-46D8-84E1-A243901B5264">
+        <Condition>OPTEDIN</Condition>
+        <RegistryValue Id="SingleAppModeRegValue" Root="HKLM" Key="SOFTWARE\Microsoft\Surface\v2.0\Global\Shell" Name="SingleAppMode" Action="write" Value="1" Type="integer"/>
+        <RegistryValue Id="SingleAppApplicationRegValue" Root="HKLM" Key="SOFTWARE\Microsoft\Surface\v2.0\Global\SingleAppMode" Name="SingleAppApplication" Action="write" Value="SocialStream.xml" Type="string"/>
+        <RegistryValue Id="SingleAppApplicationRestartQuotaRegValue" Root="HKLM" Key="SOFTWARE\Microsoft\Surface\v2.0\Global\SingleAppMode" Name="SingleAppRestartQuota" Action="write" Value="20" Type="integer"/>
+      </Component>
+
+    </Directory>
+
+    <Feature Id="ProductFeature" Title="SocialStream" Level="1">
+      <ComponentRef Id="ApplicationInfoComponent" />
+      <ComponentRef Id="ProductComponent" />
+      <ComponentRef Id="ConfigComponent" />
+      <ComponentRef Id="ResourcesComponent" />
+      <ComponentRef Id="SingleApplicationModeComponent"/>
+      <ComponentRef Id="AudioComponent" />
+      <ComponentRef Id="ApplicationShortcut" />
+    </Feature>
+
+    <!-- Custom UI (modified WixUI Extension).  Properties to customize this UI follow. -->
+
+    <!-- We copy the entire contents of WixUI_InstallDir.wxs from the WiX source code so we can use it
+         as a base to insert our custom dialogs, and make other tweaks to the UI progression. -->
+    <!-- Custom UI (modified WixUI Extension).  Properties to customize this UI follow. -->
+
+    <!-- We copy the entire contents of WixUI_InstallDir.wxs from the WiX source code so we can use it
+         as a base to insert our custom dialogs, and make other tweaks to the UI progression. -->
+    <UI Id="WixUI_InstallDir">
+
+      <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8"/>
+      <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="12"/>
+      <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes"/>
+
+      <!-- TODO: For white text, use these.
+      <TextStyle Id="WixUI_Font_Normal_White" FaceName="Tahoma" Size="8" Red="255" Green="255" Blue="255"/>
+      <TextStyle Id="WixUI_Font_Title_White" FaceName="Tahoma" Size="9" Bold="yes" Red="255" Green="255" Blue="255"/>
+      -->
+
+      <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
+      <Property Id="WixUI_Mode" Value="InstallDir" />
+
+      <DialogRef Id="BrowseDlg" />
+      <DialogRef Id="DiskCostDlg" />
+      <DialogRef Id="ErrorDlg" />
+      <DialogRef Id="FatalError" />
+      <DialogRef Id="FilesInUse" />
+      <DialogRef Id="MsiRMFilesInUse" />
+      <DialogRef Id="PrepareDlg" />
+      <DialogRef Id="ProgressDlg" />
+      <DialogRef Id="ResumeDlg" />
+      <DialogRef Id="UserExit" />
+
+      <!-- Custom welcome dialog.  Same as the WixUI Extension Welcome Dialog, but with customizable text.  Set defines above.  -->
+      <Dialog Id="CustomWelcomeDlg" Width="370" Height="270" Title="[ProductName] Setup">
+        <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="Next" />
+        <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="Cancel">
+          <Publish Event="SpawnDialog" Value="CancelDlg">1</Publish>
+        </Control>
+        <Control Id="Bitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="234" TabSkip="no" Text="WixUI_Bmp_Dialog" />
+        <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Disabled="yes" Text="Back" />
+        <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
+        <Control Id="Description" Type="Text" X="135" Y="80" Width="220" Height="60" Transparent="yes" NoPrefix="yes" Text="$(var.WelcomeDialogText)" />
+        <Control Id="Title" Type="Text" X="135" Y="20" Width="220" Height="60" Transparent="yes" NoPrefix="yes" Text="$(var.WelcomeDialogTitle)" />
+      </Dialog>
+
+      <!-- We have defined the Controls above (or included them by reference with DialogRef elements), so now we
+           wire up what happens when various buttons are pushed.  This is done via the Publish tag, which is sort
+           of like an event handler.  We want a NewDialog to be displayed when pushing back or forward, and so we
+           wire up the install sequence by creating this chain.  Other events include SpawnDialog (pop-up message 
+           box), and various actions accomplished with DoAction events.  We put a 1 (for TRUE) in the innertext 
+           to enable the given Publish element, or a condition for things that are conditional (like accepting
+           the license agreement before being able to proceed to the next dialog. -->
+
+      <!-- In the normal operation of things (not maintanence mode), the sequence goes: 
+           CustomWelcomeDlg -> LicenseAgreementDlg -> OptInDlg -> VerifyReadyDlg -> Install Progress -> ExitDialog -->
+
+      <?ifdef OptInDescription?>
+      <?ifndef OptInText?>
+      <?error OptInText must be defined if OptInDescription is defined.?>
+      <?endif?>
+
+      <!-- Define custom opt-in dialog. -->
+      <Dialog Id="OptInDlg" Width="370" Height="270" Title="[ProductName] Setup" NoMinimize="yes">
+        <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="Next"/>
+        <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="Back"/>
+        <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="Cancel">
+          <Publish Event="SpawnDialog" Value="CancelDlg">1</Publish>
+        </Control>
+        <Control Id="Bitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="yes" Text="WixUI_Bmp_Banner"/>
+        <Control Id="OptInDescriptionText" Type="Text" X="20" Y="64" Width="300" Height="100" TabSkip="yes" Text="$(var.OptInDescription)"/>
+        <Control Id="OptInCheckBox" Type="CheckBox" X="20" Y="207" Width="300" Height="18" TabSkip="no"
+                 Text="$(var.OptInText)" Property="OPTEDIN" CheckBoxValue="1"/>
+        <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0"/>
+      </Dialog>
+
+      <!-- Insert our custom dialog.  -->
+      <Publish Dialog="OptInDlg" Control="Back" Event="NewDialog" Value="LicenseAgreementDlg">1</Publish>
+      <Publish Dialog="OptInDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+      <?define LicenseAgreementNext="OptInDlg"?>
+      <?define VerifyReadyPrev="OptInDlg"?>
+      <?else?>
+      <?ifdef OptInText?>
+      <?error OptInDescription must be defined if OptInText is defined.?>
+      <?endif?>
+      <?define LicenseAgreementNext="VerifyReadyDlg"?>
+      <?define VerifyReadyPrev="LicenseAgreementDlg"?>
+      <?endif?>
+
+      <!-- Continue to define the dialog sequence, except we remove the InstallDirDlg since we don't want to provide that option. -->
+      <Publish Dialog="BrowseDlg" Control="OK" Event="DoAction" Value="WixUIValidatePath" Order="3">1</Publish>
+      <Publish Dialog="BrowseDlg" Control="OK" Event="SpawnDialog" Value="InvalidDirDlg" Order="4"><![CDATA[WIXUI_INSTALLDIR_VALID<>"1"]]></Publish>
+
+      <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
+
+      <Publish Dialog="CustomWelcomeDlg" Control="Next" Event="NewDialog" Value="LicenseAgreementDlg">1</Publish>
+
+      <Publish Dialog="LicenseAgreementDlg" Control="Back" Event="NewDialog" Value="CustomWelcomeDlg">1</Publish>
+      <Publish Dialog="LicenseAgreementDlg" Control="Next" Event="NewDialog" Value="$(var.LicenseAgreementNext)">LicenseAccepted = "1"</Publish>
+
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="$(var.VerifyReadyPrev)" Order="1">NOT Installed</Publish>
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="2">Installed</Publish>
+
+      <Publish Dialog="MaintenanceWelcomeDlg" Control="Next" Event="NewDialog" Value="MaintenanceTypeDlg">1</Publish>
+
+      <Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+      <Publish Dialog="MaintenanceTypeDlg" Control="RemoveButton" Event="NewDialog" Value="VerifyReadyDlg">1</Publish>
+      <Publish Dialog="MaintenanceTypeDlg" Control="Back" Event="NewDialog" Value="MaintenanceWelcomeDlg">1</Publish>
+
+      <Property Id="ARPNOMODIFY" Value="1" />
+    </UI>
+
+    <!-- Include common WixUI, which is used by the above. -->
+    <UIRef Id="WixUI_Common" />
+
+    <!-- Properties for UI graphics.  Should be JPGs. -->
+    <WixVariable Id="WixUIBannerBmp" Value="Resources/wix-banner.jpg" />
+    <WixVariable Id="WixUIDialogBmp" Value="Resources/wix-intro.jpg" />
+
+    <!-- Eula text in RTF. -->
+    <WixVariable Id="WixUILicenseRtf" Value="Resources/EULA.rtf" />
+
+    <!-- Set the property so the WiX UI Extension does the right thing. -->
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="$(var.AtExitText)" />
+
+    <!-- Make sure the checkbox is initially checked. -->
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+    <!-- Create the custom action and target property. -->
+    <Property Id="WixShellExecTarget" Value="[INSTALLLOCATION]SocialStream.ConfigTool.exe" />
+    <CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
+
+    <!-- Wire up the Finish button on the ExitDialog to perform our Custom Action. -->
+    <UI>
+      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+    </UI>
+
+    <!-- Set the icon in Add/Remove Programs. -->
+    <Property Id="ARPPRODUCTICON">MainIcon</Property>
+    <Icon Id="MainIcon" SourceFile="Resources/wix-app-icon.ico"/>
+
+  </Product>
+</Wix>

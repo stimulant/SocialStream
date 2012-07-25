@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddBanLabel" xml:space="preserve">
+    <value>Add a New Ban</value>
+  </data>
+  <data name="AddQueryLabel" xml:space="preserve">
+    <value>Add a New Query</value>
+  </data>
+  <data name="AdminByteTagGroupDescription" xml:space="preserve">
+    <value>The hexadecimal value of the tag that launches the in-application admin panel</value>
+  </data>
+  <data name="AdminByteTagGroupTitle" xml:space="preserve">
+    <value>Admin Tag</value>
+  </data>
+  <data name="AdminPanelTimeoutGroupDescription" xml:space="preserve">
+    <value>The delay after which the in-application admin panel will disappear specified in hours, minutes and seconds. (Example format: HH:MM:SS)</value>
+  </data>
+  <data name="AdminPanelTimeoutGroupTitle" xml:space="preserve">
+    <value>Admin panel timeout</value>
+  </data>
+  <data name="Appearance" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
+  <data name="AppearanceEditorDescription" xml:space="preserve">
+    <value>Configure look-and-feel settings</value>
+  </data>
+  <data name="AutoScrollSpeedGroupDescription" xml:space="preserve">
+    <value>The direction in which the stream animates</value>
+  </data>
+  <data name="AutoScrollSpeedGroupTitle" xml:space="preserve">
+    <value>Stream direction</value>
+  </data>
+  <data name="BackgroundImagesGroupDescription" xml:space="preserve">
+    <value>Select the background images for horizontal and vertical orientations of Microsoft Surface</value>
+  </data>
+  <data name="BackgroundImagesGroupTitle" xml:space="preserve">
+    <value>Background images</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Chronological" xml:space="preserve">
+    <value>Chronological</value>
+  </data>
+  <data name="ConfigTool" xml:space="preserve">
+    <value>Configuration Tool</value>
+  </data>
+  <data name="DistributeContentGroupDescription" xml:space="preserve">
+    <value>If enabled, content will be duplicated in stream in order to maintain an even distribution of news, tweets and images.</value>
+  </data>
+  <data name="DistributeContentGroupTitle" xml:space="preserve">
+    <value>Distribute Content Evenly</value>
+  </data>
+  <data name="EditLabel" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EnableContentResizingGroupDescription" xml:space="preserve">
+    <value>Allow or disallow resizing of content items. If enabled, container resizing will scale up all content within it. If disabled, content wraps instead of scaling to fit.</value>
+  </data>
+  <data name="EnableContentResizingGroupTitle" xml:space="preserve">
+    <value>Enable content resizing</value>
+  </data>
+  <data name="Flickr" xml:space="preserve">
+    <value>Flickr</value>
+  </data>
+  <data name="FlickrApiKeyGroupDescription" xml:space="preserve">
+    <value>The key for connecting to the Flickr API</value>
+  </data>
+  <data name="FlickrApiKeyGroupTitle" xml:space="preserve">
+    <value>Flickr API Key</value>
+  </data>
+  <data name="FlickrBansGroupDescription" xml:space="preserve">
+    <value>Items to block from the Flickr stream. Use "@username" to exclude images from a specific user, "term" to exclude a specific term, or the URL of a specific image to exclude.</value>
+  </data>
+  <data name="FlickrBansGroupTitle" xml:space="preserve">
+    <value>Flickr bans</value>
+  </data>
+  <data name="FlickrEditorDescription" xml:space="preserve">
+    <value>Configure Flickr settings</value>
+  </data>
+  <data name="FlickrPollIntervalGroupDescription" xml:space="preserve">
+    <value>How often to query the Flickr API for new images specified in hours, minutes and seconds. (Example format: HH:MM:SS)</value>
+  </data>
+  <data name="FlickrPollIntervalGroupTitle" xml:space="preserve">
+    <value>API polling interval</value>
+  </data>
+  <data name="FlickrQueriesGroupDescription" xml:space="preserve">
+    <value>Terms to search for on Flickr. Use "@username" to include images from a specific account, or "term" to do a general search for that term.</value>
+  </data>
+  <data name="FlickrQueriesGroupTitle" xml:space="preserve">
+    <value>Flickr queries</value>
+  </data>
+  <data name="ForegroundColorGroupDescription" xml:space="preserve">
+    <value>Sets the color of the text and accents for stream items</value>
+  </data>
+  <data name="ForegroundColorGroupTitle" xml:space="preserve">
+    <value>Foreground color</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="GeneralEditorDescription" xml:space="preserve">
+    <value>Configure general application settings</value>
+  </data>
+  <data name="HexColorError" xml:space="preserve">
+    <value>Colors must be entered in the form #AARRGGBB</value>
+  </data>
+  <data name="HexError" xml:space="preserve">
+    <value>Enter a valid hexadecimal number.</value>
+  </data>
+  <data name="Horizontal" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="ImageSizeGroupDescription" xml:space="preserve">
+    <value>The minimum and maximum pixel width and height of an image. Use Load Default Settings to return to recommended values.</value>
+  </data>
+  <data name="ImageSizeGroupTitle" xml:space="preserve">
+    <value>Image size limits</value>
+  </data>
+  <data name="Left" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="Length" xml:space="preserve">
+    <value>Length</value>
+  </data>
+  <data name="Manual" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="Maximum" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="MicrosoftTag" xml:space="preserve">
+    <value>Microsoft Tag</value>
+  </data>
+  <data name="Minimum" xml:space="preserve">
+    <value>Minimum</value>
+  </data>
+  <data name="NewItemAlertGroupDescription" xml:space="preserve">
+    <value>Flash the borders of items that are less than this old specified in hours, minutes and seconds. (Example format: HH:MM:SS)</value>
+  </data>
+  <data name="NewItemAlertGroupTitle" xml:space="preserve">
+    <value>New item alert</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="NewsOpacityGroupDescription" xml:space="preserve">
+    <value>The opacity of news items in the stream</value>
+  </data>
+  <data name="NewsOpacityGroupTitle" xml:space="preserve">
+    <value>News item opacity</value>
+  </data>
+  <data name="NewsSizeGroupDescription" xml:space="preserve">
+    <value>The minimum and maximum pixel width and height of news item. Use Load Default Settings to return to recommended values.</value>
+  </data>
+  <data name="NewsSizeGroupTitle" xml:space="preserve">
+    <value>News item size limits</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="NumberError" xml:space="preserve">
+    <value>Please enter a valid number.</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>Social Stream for Microsoft® Surface®</value>
+  </data>
+  <data name="ProfanityFilter" xml:space="preserve">
+    <value>Profanity Filter</value>
+  </data>
+  <data name="QueryStringComma" xml:space="preserve">
+    <value>Queries may not include the "|" character.</value>
+  </data>
+  <data name="QueryStringEmpty" xml:space="preserve">
+    <value>Queries may not be empty.</value>
+  </data>
+  <data name="Random" xml:space="preserve">
+    <value>Random</value>
+  </data>
+  <data name="ResetCategoriesLabel" xml:space="preserve">
+    <value>Reset to default categories</value>
+  </data>
+  <data name="RetrievalOrderGroupDescription" xml:space="preserve">
+    <value>Defines the order in which items are displayed</value>
+  </data>
+  <data name="RetrievalOrderGroupTitle" xml:space="preserve">
+    <value>Content display order</value>
+  </data>
+  <data name="Right" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SaveError" xml:space="preserve">
+    <value>Please correct the errors highlighted in red before saving.</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SizeError" xml:space="preserve">
+    <value>Please enter a size in the format: width,length</value>
+  </data>
+  <data name="StatusSizeGroupDescription" xml:space="preserve">
+    <value>The minimum and maximum pixel width and height of a Tweet. Use Load Default Settings to return to recommended values.</value>
+  </data>
+  <data name="StatusSizeGroupTitle" xml:space="preserve">
+    <value>Tweet size limits</value>
+  </data>
+  <data name="TagSeriesHeader" xml:space="preserve">
+    <value>Tag series</value>
+  </data>
+  <data name="TagValueHeader" xml:space="preserve">
+    <value>Tag value</value>
+  </data>
+  <data name="ThemeColorGroupDescription" xml:space="preserve">
+    <value>Sets the background color for stream items</value>
+  </data>
+  <data name="ThemeColorGroupTitle" xml:space="preserve">
+    <value>Background Color</value>
+  </data>
+  <data name="TimeSpanError" xml:space="preserve">
+    <value>Enter a valid time in the format HH:MM:SS</value>
+  </data>
+  <data name="TweetOpacityGroupDescription" xml:space="preserve">
+    <value>The opacity of tweets in the stream</value>
+  </data>
+  <data name="TweetOpacityGroupTitle" xml:space="preserve">
+    <value>Tweet opacity</value>
+  </data>
+  <data name="Twitter" xml:space="preserve">
+    <value>Twitter</value>
+  </data>
+  <data name="TwitterBansGroupDescription" xml:space="preserve">
+    <value>Items to block from the Twitter stream. Use "@username" to exclude tweets from a specific user, "term" to exclude a specific term, or the URL of a specific tweet to exclude.</value>
+  </data>
+  <data name="TwitterBansGroupTitle" xml:space="preserve">
+    <value>Twitter bans</value>
+  </data>
+  <data name="TwitterEditorDescription" xml:space="preserve">
+    <value>Configure Twitter settings</value>
+  </data>
+  <data name="TwitterPollIntervalGroupDescription" xml:space="preserve">
+    <value>How often to query the Twitter API for new tweets specified in hours, minutes and seconds. (Example format: HH:MM:SS)</value>
+  </data>
+  <data name="TwitterPollIntervalGroupTitle" xml:space="preserve">
+    <value>API polling interval</value>
+  </data>
+  <data name="TwitterQueriesGroupDescription" xml:space="preserve">
+    <value>Terms to search for on Twitter. Use "@username" to include tweets from a specific account, "to:username" to include tweets to a specific account, "#term" to include a hashtag, and "term" to do a general search for that term.</value>
+  </data>
+  <data name="TwitterQueriesGroupTitle" xml:space="preserve">
+    <value>Twitter queries</value>
+  </data>
+  <data name="Vertical" xml:space="preserve">
+    <value>Vertical</value>
+  </data>
+  <data name="VisualizationColorGroupDescription" xml:space="preserve">
+    <value>Sets the color of the contact visualization when the display is touched</value>
+  </data>
+  <data name="VisualizationColorGroupTitle" xml:space="preserve">
+    <value>Visualization Color</value>
+  </data>
+  <data name="Width" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="FilteredWordsGroupDescription" xml:space="preserve">
+    <value>Specific words that will trigger the exclusion of a particular item from the stream</value>
+  </data>
+  <data name="FilteredWordsGroupTitle" xml:space="preserve">
+    <value>Filter list</value>
+  </data>
+  <data name="IsProfanityFilterEnabledGroupDescription" xml:space="preserve">
+    <value>Whether or not the profanity filter is enabled</value>
+  </data>
+  <data name="IsProfanityFilterEnabledGroupTitle" xml:space="preserve">
+    <value>Enable filtering</value>
+  </data>
+  <data name="MicrosoftTagApiKeyGroupDescription" xml:space="preserve">
+    <value>The key for connecting to the Microsoft Tag API</value>
+  </data>
+  <data name="MicrosoftTagApiKeyGroupTitle" xml:space="preserve">
+    <value>Microsoft Tag API key</value>
+  </data>
+  <data name="MicrosoftTagEditorDescription" xml:space="preserve">
+    <value>Configures Microsoft Tag settings</value>
+  </data>
+  <data name="NewsBansGroupDescription" xml:space="preserve">
+    <value>Items to block from the news stream. Use "@username" to exclude items from a specific author, "term" to exclude items containing a specific term, or URLs to exclude specific news items.</value>
+  </data>
+  <data name="NewsBansGroupTitle" xml:space="preserve">
+    <value>News bans</value>
+  </data>
+  <data name="NewsEditorDescription" xml:space="preserve">
+    <value>Configure RSS feed settings</value>
+  </data>
+  <data name="NewsFeedsGroupDescription" xml:space="preserve">
+    <value>A list of URLs to RSS or ATOM feeds to poll for news items.</value>
+  </data>
+  <data name="NewsFeedsGroupTitle" xml:space="preserve">
+    <value>News feed subscriptions</value>
+  </data>
+  <data name="NewsPollIntervalGroupDescription" xml:space="preserve">
+    <value>How often to check for new news items specified in hours, minutes and seconds. (Example format: HH:MM:SS)</value>
+  </data>
+  <data name="NewsPollIntervalGroupTitle" xml:space="preserve">
+    <value>Feed polling interval</value>
+  </data>
+  <data name="ProfanityFilterDescription" xml:space="preserve">
+    <value>Configure words and phrases to filter out</value>
+  </data>
+  <data name="UriError" xml:space="preserve">
+    <value>Please enter a valid URL.</value>
+  </data>
+  <data name="BackgroundFileError" xml:space="preserve">
+    <value>Couldn't copy background image.</value>
+  </data>
+  <data name="BackgroundFormat" xml:space="preserve">
+    <value>Background images must be 1920x1080 PNG files.</value>
+  </data>
+  <data name="DateTimeError" xml:space="preserve">
+    <value>Enter a valid datetime in the format YYYY/MM/DD</value>
+  </data>
+  <data name="MinFeedItemDateGroupDescription" xml:space="preserve">
+    <value>Don't display any items which were posted before this date.</value>
+  </data>
+  <data name="MinFeedItemDateGroupTitle" xml:space="preserve">
+    <value>Minimum Date</value>
+  </data>
+  <data name="ApiKeyExplanation" xml:space="preserve">
+    <value>To change API keys, edit the configuration XML file at</value>
+  </data>
+  <data name="ConfigFileLocation" xml:space="preserve">
+    <value>C:\Program Files (x86)\Social Stream for Microsoft Surface\SocialStream.exe.config</value>
+  </data>
+  <data name="LoadDefaults" xml:space="preserve">
+    <value>Load Default Settings</value>
+  </data>
+  <data name="DefaultsConfirmation" xml:space="preserve">
+    <value>Are you sure you want to overwrite your changes with the default settings?</value>
+  </data>
+</root>

@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C03A76F6-C5B1-4EC4-9DAC-D6633638EA7A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SocialStream.ConfigTool</RootNamespace>
+    <AssemblyName>SocialStream.ConfigTool</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20901.0</ExpressionBlendVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\SocialStream\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\SocialStream\bin\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;CODE_ANALYSIS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>wix-app-icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions" />
+    <Reference Include="Microsoft.Surface.Presentation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Interactivity" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Command\CancelCommand.cs" />
+    <Compile Include="Command\AddFlickrBanCommand.cs" />
+    <Compile Include="Command\AddFlickrQueryCommand.cs" />
+    <Compile Include="Command\AddNewsBanCommand.cs" />
+    <Compile Include="Command\AddNewsQueryCommand.cs" />
+    <Compile Include="Command\AddTwitterBanCommand.cs" />
+    <Compile Include="Command\AddTwitterQueryCommand.cs" />
+    <Compile Include="Command\LoadDefaultsCommand.cs" />
+    <Compile Include="Command\RemoveNewsQueryCommand.cs" />
+    <Compile Include="Command\RemoveNewsBanCommand.cs" />
+    <Compile Include="Command\RemoveTwitterBanCommand.cs" />
+    <Compile Include="Command\RemoveFlickrBanCommand.cs" />
+    <Compile Include="Command\RemoveTwitterQueryCommand.cs" />
+    <Compile Include="Command\RemoveFlickrQueryCommand.cs" />
+    <Compile Include="Command\SetAutoScrollDirectionCommand.cs" />
+    <Compile Include="Command\SetBackgroundImagePathCommand.cs" />
+    <Compile Include="Command\SetEnableContentResizing.cs" />
+    <Compile Include="Command\SetDistributeContentEvenlyCommand.cs" />
+    <Compile Include="Command\SetProfanityFilterCommand.cs" />
+    <Compile Include="Controls\ConfigInterface.xaml.cs">
+      <DependentUpon>ConfigInterface.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AppearanceEditor.xaml.cs">
+      <DependentUpon>AppearanceEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProfanityEditor.xaml.cs">
+      <DependentUpon>ProfanityEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MicrosoftTagEditor.xaml.cs">
+      <DependentUpon>MicrosoftTagEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NewsEditor.xaml.cs">
+      <DependentUpon>NewsEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TwitterEditor.xaml.cs">
+      <DependentUpon>TwitterEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FlickrEditor.xaml.cs">
+      <DependentUpon>FlickrEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GeneralEditor.xaml.cs">
+      <DependentUpon>GeneralEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\BooleanConverter.cs" />
+    <Compile Include="Converters\DoubleToPercentageConverter.cs" />
+    <Compile Include="Converters\HexStringToLongConverter.cs" />
+    <Compile Include="Converters\IsEqualConverter.cs" />
+    <Compile Include="Validators\IsValidDateRule.cs" />
+    <Compile Include="Validators\IsValidUriRule.cs" />
+    <Compile Include="VO\BindableStringVO.cs" />
+    <CodeAnalysisDictionary Include="CustomDictionary.xml" />
+    <Compile Include="Helpers\BindableBase.cs" />
+    <Compile Include="Helpers\VisualEnumerables.cs" />
+    <Compile Include="Validators\IsValidSizeRule.cs" />
+    <Compile Include="Validators\IsValidDoubleRule.cs" />
+    <Compile Include="Validators\IsValidHexColorRule.cs" />
+    <Compile Include="Validators\IsValidTimeSpanValueRule.cs" />
+    <Compile Include="Validators\IsValidQueryStringRule.cs" />
+    <Compile Include="Validators\IsValidHexValueRule.cs" />
+    <Resource Include="wix-app-icon.ico" />
+    <Page Include="Controls\ConfigInterface.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AppearanceEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ProfanityEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\MicrosoftTagEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\NewsEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TwitterEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\FlickrEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\GeneralEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Command\SaveCommand.cs" />
+    <Compile Include="Converters\VisibilityConverter.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Resources\Resources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\AppState.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+    <BlendEmbeddedFont Include="Fonts\SegoeWP-Bold.ttf" />
+    <BlendEmbeddedFont Include="Fonts\SegoeWP.ttf" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <BlendEmbeddedFont Include="Fonts\SegoeWP-Light.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+      <Characters>
+      </Characters>
+      <Uppercase>True</Uppercase>
+      <Lowercase>True</Lowercase>
+      <Numbers>True</Numbers>
+      <Punctuation>True</Punctuation>
+    </BlendEmbeddedFont>
+    <Resource Include="Resources\BannerBottom.png" />
+    <Resource Include="Resources\BannerTop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FeedProcessor\FeedProcessor.csproj">
+      <Project>{426136C0-9D92-4BBA-93A0-EEE028407D0B}</Project>
+      <Name>FeedProcessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SocialStream\SocialStream.csproj">
+      <Project>{D6DC9AEF-AB32-422E-9B8D-04B449DB1A50}</Project>
+      <Name>SocialStream</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>cd "$(OutDir)"
+copy SocialStream.exe.config SocialStream.exe.config.default
+copy SocialStream.vshost.exe.config SocialStream.vshost.exe.config.default
+copy Profanity.txt Profanity.txt.default
+cd Resources
+copy WindowBackground.png WindowBackground.png.default
+copy WindowBackground_Vertical.png WindowBackground_Vertical.png.default
+</PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.0\Microsoft.Expression.Blend.WPF.targets" />
+</Project>

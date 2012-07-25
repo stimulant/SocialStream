@@ -1,0 +1,86 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="http://schemas.microsoft.com/surface/2008" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" xmlns:props="clr-namespace:SocialStream.Properties" x:Class="SocialStream.Controls.River" d:DesignWidth="1024" d:DesignHeight="768">
+  <Grid Background="Transparent">
+    <VisualStateManager.VisualStateGroups>
+      <VisualStateGroup x:Name="LoadingStates">
+        <VisualState x:Name="IsLoadingState" />
+        <VisualState x:Name="NotLoadingState">
+          <Storyboard>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="_loaderRight">
+              <SplineDoubleKeyFrame KeyTime="0:0:1" Value="181" KeySpline="0,0,1,0" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="_loaderRight">
+              <SplineDoubleKeyFrame KeyTime="0:0:0.7" Value="1" />
+              <SplineDoubleKeyFrame KeyTime="0:0:1" Value="0" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="_loaderLeft">
+              <SplineDoubleKeyFrame KeyTime="0:0:1" Value="-181" KeySpline="0,0,1,0" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="_loaderLeft">
+              <SplineDoubleKeyFrame KeyTime="0:0:0.7" Value="1" />
+              <SplineDoubleKeyFrame KeyTime="0:0:1" Value="0" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="_scatterView">
+              <SplineDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+              <SplineDoubleKeyFrame KeyTime="0:0:1" Value="1" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="_proxyContainer">
+              <SplineDoubleKeyFrame KeyTime="0:0:0" Value="0" />
+              <SplineDoubleKeyFrame KeyTime="0:0:1" Value="1" />
+            </DoubleAnimationUsingKeyFrames>
+          </Storyboard>
+        </VisualState>
+      </VisualStateGroup>
+      <VisualStateGroup x:Name="DirectionStates">
+        <VisualState x:Name="MovingRightState" />
+        <VisualState x:Name="MovingLeftState">
+        	<Storyboard>
+        		<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="_loaderLeft">
+        			<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        		</ObjectAnimationUsingKeyFrames>
+        		<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="_loaderRight">
+        			<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+        		</ObjectAnimationUsingKeyFrames>
+        	</Storyboard>
+        </VisualState>
+      </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+    <Canvas x:Name="_proxyContainer" x:FieldModifier="private" Opacity="0" />
+    <s:ScatterView x:Name="_scatterView" x:FieldModifier="private" ItemContainerStyle="{DynamicResource FlippingScatterViewItemStyle}" Opacity="0" />
+    <Grid x:Name="_orientedControls" RenderTransformOrigin="0.5,0.5">
+      <Grid x:Name="_loaderRight" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" IsHitTestVisible="False" RenderTransformOrigin="0.5,0.5">
+        <Grid.RenderTransform>
+          <TransformGroup>
+            <ScaleTransform />
+            <SkewTransform />
+            <RotateTransform />
+            <TranslateTransform />
+          </TransformGroup>
+        </Grid.RenderTransform>
+        <Border CornerRadius="25,0,0,25" BorderBrush="Black" BorderThickness="3" Opacity="0.8">
+          <Border.Effect>
+            <BlurEffect Radius="15" />
+          </Border.Effect>
+        </Border>
+        <Border CornerRadius="25,0,0,25" Background="White" Opacity="0.8" />
+        <TextBlock Text="{x:Static props:Resources.Loading}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="40,0" Foreground="Black" FontWeight="SemiBold" />
+      </Grid>
+      <Grid x:Name="_loaderLeft" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" IsHitTestVisible="False" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+        <Grid.RenderTransform>
+          <TransformGroup>
+            <ScaleTransform />
+            <SkewTransform />
+            <RotateTransform />
+            <TranslateTransform />
+          </TransformGroup>
+        </Grid.RenderTransform>
+        <Border CornerRadius="0,25,25,0" BorderBrush="Black" BorderThickness="3" Opacity="0.8">
+          <Border.Effect>
+            <BlurEffect Radius="15" />
+          </Border.Effect>
+        </Border>
+        <Border CornerRadius="0,25,25,0" Background="White" Opacity="0.8" />
+        <TextBlock Text="{x:Static props:Resources.Loading}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="40,0" Foreground="Black" FontWeight="SemiBold" />
+      </Grid>
+    </Grid>
+  </Grid>
+</UserControl>

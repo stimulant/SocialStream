@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.ws.tag.microsoft.com/ver1" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ws.tag.microsoft.com/ver1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.ws.tag.microsoft.com/ver1/Imports">
+      <xsd:import schemaLocation="https://ws.tag.microsoft.com/Service.xsd" namespace="http://www.ws.tag.microsoft.com/ver1" />
+      <xsd:import schemaLocation="https://ws.tag.microsoft.com/Service1.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IMIBPContract_CreateCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCategory" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_CreateCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_CreateCategory_SenderFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:SenderFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_CreateCategory_UserAuthFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:UserAuthFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_CreateCategory_ReceiverFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ReceiverFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_CreateCategory_CategoryFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:CategoryFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_UpdateCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCategory" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_UpdateCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_UpdateCategory_SenderFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:SenderFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_UpdateCategory_CategoryFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:CategoryFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_UpdateCategory_UserAuthFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:UserAuthFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_UpdateCategory_ReceiverFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ReceiverFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_ActivateCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActivateCategory" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_ActivateCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActivateCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_ActivateCategory_UserAuthFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:UserAuthFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_ActivateCategory_SenderFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:SenderFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_ActivateCategory_ReceiverFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ReceiverFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_ActivateCategory_CategoryFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:CategoryFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_PauseCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:PauseCategory" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_PauseCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PauseCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_PauseCategory_ReceiverFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ReceiverFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_PauseCategory_UserAuthFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:UserAuthFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_PauseCategory_SenderFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:SenderFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_PauseCategory_CategoryFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:CategoryFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_CreateTag_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateTag" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_CreateTag_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_CreateTag_ReceiverFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ReceiverFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_CreateTag_UserAuthFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:UserAuthFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_CreateTag_SenderFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:SenderFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_CreateTag_CategoryFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:CategoryFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_CreateTag_TagFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:TagFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_ActivateTag_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActivateTag" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_ActivateTag_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActivateTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_ActivateTag_UserAuthFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:UserAuthFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_ActivateTag_SenderFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:SenderFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_ActivateTag_ReceiverFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ReceiverFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_ActivateTag_CategoryFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:CategoryFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_ActivateTag_TagFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:TagFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_PauseTag_InputMessage">
+    <wsdl:part name="parameters" element="tns:PauseTag" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_PauseTag_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PauseTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_PauseTag_CategoryFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:CategoryFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_PauseTag_ReceiverFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ReceiverFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_PauseTag_TagFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:TagFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_PauseTag_UserAuthFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:UserAuthFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_PauseTag_SenderFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:SenderFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_DeleteTag_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTag" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_DeleteTag_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_DeleteTag_TagFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:TagFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_DeleteTag_SenderFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:SenderFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_DeleteTag_CategoryFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:CategoryFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_DeleteTag_UserAuthFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:UserAuthFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_DeleteTag_ReceiverFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ReceiverFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_UpdateTag_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTag" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_UpdateTag_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTagResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_UpdateTag_SenderFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:SenderFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_UpdateTag_ReceiverFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ReceiverFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_UpdateTag_CategoryFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:CategoryFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_UpdateTag_UserAuthFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:UserAuthFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_UpdateTag_TagFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:TagFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetTagByTagName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagByTagName" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetTagByTagName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagByTagNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetTagByTagName_SenderFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:SenderFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetTagByTagName_ReceiverFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ReceiverFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetTagByTagName_CategoryFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:CategoryFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetTagByTagName_UserAuthFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:UserAuthFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetTagByTagName_TagFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:TagFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetBarcode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBarcode" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetBarcode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBarcodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetBarcode_UserAuthFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:UserAuthFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetBarcode_CategoryFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:CategoryFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetBarcode_BarCodeFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:BarCodeFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetBarcode_TagFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:TagFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetBarcode_SenderFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:SenderFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetBarcode_ReceiverFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ReceiverFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetTagId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagId" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetTagId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetTagId_ReceiverFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:ReceiverFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetTagId_TagFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:TagFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetTagId_UserAuthFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:UserAuthFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetTagId_SenderFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:SenderFault" />
+  </wsdl:message>
+  <wsdl:message name="IMIBPContract_GetTagId_CategoryFaultFault_FaultMessage">
+    <wsdl:part name="detail" element="tns:CategoryFault" />
+  </wsdl:message>
+  <wsdl:portType name="IMIBPContract">
+    <wsdl:operation name="CreateCategory">
+      <wsdl:input wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/CreateCategory" message="tns:IMIBPContract_CreateCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/CreateCategoryResponse" message="tns:IMIBPContract_CreateCategory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/CreateCategorySenderFaultFault" name="SenderFaultFault" message="tns:IMIBPContract_CreateCategory_SenderFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/CreateCategoryUserAuthFaultFault" name="UserAuthFaultFault" message="tns:IMIBPContract_CreateCategory_UserAuthFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/CreateCategoryReceiverFaultFault" name="ReceiverFaultFault" message="tns:IMIBPContract_CreateCategory_ReceiverFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/CreateCategoryCategoryFaultFault" name="CategoryFaultFault" message="tns:IMIBPContract_CreateCategory_CategoryFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCategory">
+      <wsdl:input wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/UpdateCategory" message="tns:IMIBPContract_UpdateCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/UpdateCategoryResponse" message="tns:IMIBPContract_UpdateCategory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/UpdateCategorySenderFaultFault" name="SenderFaultFault" message="tns:IMIBPContract_UpdateCategory_SenderFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/UpdateCategoryCategoryFaultFault" name="CategoryFaultFault" message="tns:IMIBPContract_UpdateCategory_CategoryFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/UpdateCategoryUserAuthFaultFault" name="UserAuthFaultFault" message="tns:IMIBPContract_UpdateCategory_UserAuthFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/UpdateCategoryReceiverFaultFault" name="ReceiverFaultFault" message="tns:IMIBPContract_UpdateCategory_ReceiverFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActivateCategory">
+      <wsdl:input wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/ActivateCategory" message="tns:IMIBPContract_ActivateCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/ActivateCategoryResponse" message="tns:IMIBPContract_ActivateCategory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/ActivateCategoryUserAuthFaultFault" name="UserAuthFaultFault" message="tns:IMIBPContract_ActivateCategory_UserAuthFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/ActivateCategorySenderFaultFault" name="SenderFaultFault" message="tns:IMIBPContract_ActivateCategory_SenderFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/ActivateCategoryReceiverFaultFault" name="ReceiverFaultFault" message="tns:IMIBPContract_ActivateCategory_ReceiverFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/ActivateCategoryCategoryFaultFault" name="CategoryFaultFault" message="tns:IMIBPContract_ActivateCategory_CategoryFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PauseCategory">
+      <wsdl:input wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/PauseCategory" message="tns:IMIBPContract_PauseCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/PauseCategoryResponse" message="tns:IMIBPContract_PauseCategory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/PauseCategoryReceiverFaultFault" name="ReceiverFaultFault" message="tns:IMIBPContract_PauseCategory_ReceiverFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/PauseCategoryUserAuthFaultFault" name="UserAuthFaultFault" message="tns:IMIBPContract_PauseCategory_UserAuthFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/PauseCategorySenderFaultFault" name="SenderFaultFault" message="tns:IMIBPContract_PauseCategory_SenderFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/PauseCategoryCategoryFaultFault" name="CategoryFaultFault" message="tns:IMIBPContract_PauseCategory_CategoryFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTag">
+      <wsdl:input wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/CreateTag" message="tns:IMIBPContract_CreateTag_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/CreateTagResponse" message="tns:IMIBPContract_CreateTag_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/CreateTagReceiverFaultFault" name="ReceiverFaultFault" message="tns:IMIBPContract_CreateTag_ReceiverFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/CreateTagUserAuthFaultFault" name="UserAuthFaultFault" message="tns:IMIBPContract_CreateTag_UserAuthFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/CreateTagSenderFaultFault" name="SenderFaultFault" message="tns:IMIBPContract_CreateTag_SenderFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/CreateTagCategoryFaultFault" name="CategoryFaultFault" message="tns:IMIBPContract_CreateTag_CategoryFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/CreateTagTagFaultFault" name="TagFaultFault" message="tns:IMIBPContract_CreateTag_TagFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActivateTag">
+      <wsdl:input wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/ActivateTag" message="tns:IMIBPContract_ActivateTag_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/ActivateTagResponse" message="tns:IMIBPContract_ActivateTag_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/ActivateTagUserAuthFaultFault" name="UserAuthFaultFault" message="tns:IMIBPContract_ActivateTag_UserAuthFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/ActivateTagSenderFaultFault" name="SenderFaultFault" message="tns:IMIBPContract_ActivateTag_SenderFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/ActivateTagReceiverFaultFault" name="ReceiverFaultFault" message="tns:IMIBPContract_ActivateTag_ReceiverFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/ActivateTagCategoryFaultFault" name="CategoryFaultFault" message="tns:IMIBPContract_ActivateTag_CategoryFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/ActivateTagTagFaultFault" name="TagFaultFault" message="tns:IMIBPContract_ActivateTag_TagFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PauseTag">
+      <wsdl:input wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/PauseTag" message="tns:IMIBPContract_PauseTag_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/PauseTagResponse" message="tns:IMIBPContract_PauseTag_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/PauseTagCategoryFaultFault" name="CategoryFaultFault" message="tns:IMIBPContract_PauseTag_CategoryFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/PauseTagReceiverFaultFault" name="ReceiverFaultFault" message="tns:IMIBPContract_PauseTag_ReceiverFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/PauseTagTagFaultFault" name="TagFaultFault" message="tns:IMIBPContract_PauseTag_TagFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/PauseTagUserAuthFaultFault" name="UserAuthFaultFault" message="tns:IMIBPContract_PauseTag_UserAuthFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/PauseTagSenderFaultFault" name="SenderFaultFault" message="tns:IMIBPContract_PauseTag_SenderFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTag">
+      <wsdl:input wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/DeleteTag" message="tns:IMIBPContract_DeleteTag_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/DeleteTagResponse" message="tns:IMIBPContract_DeleteTag_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/DeleteTagTagFaultFault" name="TagFaultFault" message="tns:IMIBPContract_DeleteTag_TagFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/DeleteTagSenderFaultFault" name="SenderFaultFault" message="tns:IMIBPContract_DeleteTag_SenderFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/DeleteTagCategoryFaultFault" name="CategoryFaultFault" message="tns:IMIBPContract_DeleteTag_CategoryFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/DeleteTagUserAuthFaultFault" name="UserAuthFaultFault" message="tns:IMIBPContract_DeleteTag_UserAuthFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/DeleteTagReceiverFaultFault" name="ReceiverFaultFault" message="tns:IMIBPContract_DeleteTag_ReceiverFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTag">
+      <wsdl:input wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/UpdateTag" message="tns:IMIBPContract_UpdateTag_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/UpdateTagResponse" message="tns:IMIBPContract_UpdateTag_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/UpdateTagSenderFaultFault" name="SenderFaultFault" message="tns:IMIBPContract_UpdateTag_SenderFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/UpdateTagReceiverFaultFault" name="ReceiverFaultFault" message="tns:IMIBPContract_UpdateTag_ReceiverFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/UpdateTagCategoryFaultFault" name="CategoryFaultFault" message="tns:IMIBPContract_UpdateTag_CategoryFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/UpdateTagUserAuthFaultFault" name="UserAuthFaultFault" message="tns:IMIBPContract_UpdateTag_UserAuthFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/UpdateTagTagFaultFault" name="TagFaultFault" message="tns:IMIBPContract_UpdateTag_TagFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTagByTagName">
+      <wsdl:input wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetTagByTagName" message="tns:IMIBPContract_GetTagByTagName_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetTagByTagNameResponse" message="tns:IMIBPContract_GetTagByTagName_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetTagByTagNameSenderFaultFault" name="SenderFaultFault" message="tns:IMIBPContract_GetTagByTagName_SenderFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetTagByTagNameReceiverFaultFault" name="ReceiverFaultFault" message="tns:IMIBPContract_GetTagByTagName_ReceiverFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetTagByTagNameCategoryFaultFault" name="CategoryFaultFault" message="tns:IMIBPContract_GetTagByTagName_CategoryFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetTagByTagNameUserAuthFaultFault" name="UserAuthFaultFault" message="tns:IMIBPContract_GetTagByTagName_UserAuthFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetTagByTagNameTagFaultFault" name="TagFaultFault" message="tns:IMIBPContract_GetTagByTagName_TagFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBarcode">
+      <wsdl:input wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetBarcode" message="tns:IMIBPContract_GetBarcode_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetBarcodeResponse" message="tns:IMIBPContract_GetBarcode_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetBarcodeUserAuthFaultFault" name="UserAuthFaultFault" message="tns:IMIBPContract_GetBarcode_UserAuthFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetBarcodeCategoryFaultFault" name="CategoryFaultFault" message="tns:IMIBPContract_GetBarcode_CategoryFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetBarcodeBarCodeFaultFault" name="BarCodeFaultFault" message="tns:IMIBPContract_GetBarcode_BarCodeFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetBarcodeTagFaultFault" name="TagFaultFault" message="tns:IMIBPContract_GetBarcode_TagFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetBarcodeSenderFaultFault" name="SenderFaultFault" message="tns:IMIBPContract_GetBarcode_SenderFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetBarcodeReceiverFaultFault" name="ReceiverFaultFault" message="tns:IMIBPContract_GetBarcode_ReceiverFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTagId">
+      <wsdl:input wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetTagId" message="tns:IMIBPContract_GetTagId_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetTagIdResponse" message="tns:IMIBPContract_GetTagId_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetTagIdReceiverFaultFault" name="ReceiverFaultFault" message="tns:IMIBPContract_GetTagId_ReceiverFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetTagIdTagFaultFault" name="TagFaultFault" message="tns:IMIBPContract_GetTagId_TagFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetTagIdUserAuthFaultFault" name="UserAuthFaultFault" message="tns:IMIBPContract_GetTagId_UserAuthFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetTagIdSenderFaultFault" name="SenderFaultFault" message="tns:IMIBPContract_GetTagId_SenderFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetTagIdCategoryFaultFault" name="CategoryFaultFault" message="tns:IMIBPContract_GetTagId_CategoryFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

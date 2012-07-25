@@ -1,0 +1,50 @@
+<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="http://schemas.microsoft.com/surface/2008" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:SocialStream.Controls" xmlns:helpers="clr-namespace:SocialStream.Helpers" xmlns:props="clr-namespace:SocialStream.Properties" xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" mc:Ignorable="d" x:Class="SocialStream.Controls.RiverContent.LargeTweet" xmlns:feeditems="clr-namespace:FeedProcessor.FeedItems;assembly=FeedProcessor" d:DesignWidth="350" d:DesignHeight="235">
+  <UserControl.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/SocialStream;component/Resources/Converters.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+      <feeditems:StatusFeedItem x:Key="DesignData" Date="6/21/2010 10:23:00 AM" Author="MSSurface" Status="If you have a 140 character Q on the Microsoft Surface SDK, Luis is now on the channel to answer in 140 characters! #Surface #WPF #XNA ^eh" />
+    </ResourceDictionary>
+  </UserControl.Resources>
+  <Grid d:DataContext="{DynamicResource DesignData}">
+    <Border Background="{DynamicResource ForegroundBrush}" />
+    <Grid Margin="5">
+      <Border CornerRadius="35,0,0,0">
+        <Border.Background>
+          <SolidColorBrush Color="#D8000000" />
+        </Border.Background>
+      </Border>
+      <Grid Margin="20,10,25,20">
+        <Viewbox x:Name="_scalingContentContainer" VerticalAlignment="Top" />
+        <Border x:Name="_fixedContentContainer">
+          <StackPanel x:Name="_contentRoot">
+            <TextBlock Text="{x:Static props:Resources.Tweet}" FontSize="36" FontFamily="{DynamicResource HeaderFont}" />
+            <Grid Margin="0,10,0,0">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+              <TextBlock Text="{Binding Author}" FontSize="14" />
+              <TextBlock Grid.Column="1" Text="{Binding Date, Converter={StaticResource RelativeTimeConverter}}" FontSize="10" VerticalAlignment="Bottom" Opacity=".5" TextAlignment="Right">
+                <i:Interaction.Behaviors>
+                  <helpers:RefreshBindingBehavior PropertyToRefresh="Text" />
+                </i:Interaction.Behaviors>
+              </TextBlock>
+            </Grid>
+            <Grid Margin="0,10,0,0">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+              <controls:ImageLoader Style="{DynamicResource ImageLoaderStyle}" UriSource="{Binding AvatarUri}" Width="48" Height="48" VerticalAlignment="Top" Label="{x:Static props:Resources.Avatar}" ClipToBounds="True" RenderAtSize="true" />
+              <TextBlock Grid.Column="1" FontSize="12" VerticalAlignment="Top" Margin="10,0,0,0" TextWrapping="Wrap" TextTrimming="WordEllipsis" Text="{Binding Status}" />
+            </Grid>
+          </StackPanel>
+        </Border>
+      </Grid>
+      <s:SurfaceButton x:Name="_closeBtn" x:FieldModifier="private" Style="{DynamicResource CloseButtonStyle}" VerticalAlignment="Top" Foreground="{DynamicResource ForegroundBrush}" Background="{DynamicResource ForegroundBrush}" HorizontalAlignment="Right" Click="Close_Click" />
+      <s:SurfaceButton x:Name="_flipBtn" x:FieldModifier="private" Style="{DynamicResource FrontFlipButtonStyle}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Flip_Click" />
+    </Grid>
+  </Grid>
+</UserControl>

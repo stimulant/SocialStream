@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ss:ApplicationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ss="http://schemas.microsoft.com/Surface/2007/ApplicationMetadata">
+  <Application>
+    <Title>Social Stream</Title>
+    <Description>View the latest from Twitter, Flickr, and news feeds.</Description>
+    <ExecutableFile>%PROGRAMFILES%\Social Stream for Microsoft Surface\SocialStream.exe</ExecutableFile>
+    <Arguments></Arguments>
+    <IconImageFile>%PROGRAMFILES%\Social Stream for Microsoft Surface\Resources\icon.png</IconImageFile>
+  </Application>
+</ss:ApplicationInfo>

@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.ws.tag.microsoft.com/ver1" elementFormDefault="qualified" targetNamespace="http://www.ws.tag.microsoft.com/ver1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://ws.tag.microsoft.com/Service1.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:element name="CreateCategory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userCredential" nillable="true" type="tns:UserCredential" />
+        <xs:element minOccurs="0" name="category" nillable="true" type="tns:Category" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="UserCredential">
+    <xs:sequence>
+      <xs:element name="AccessToken" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserCredential" nillable="true" type="tns:UserCredential" />
+  <xs:complexType name="Category">
+    <xs:sequence>
+      <xs:element name="Name" nillable="true" type="xs:string" />
+      <xs:element name="UTCStartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UTCEndDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CategoryStatus" type="tns:CategoryStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Category" nillable="true" type="tns:Category" />
+  <xs:simpleType name="CategoryStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Active" />
+      <xs:enumeration value="Paused" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CategoryStatus" nillable="true" type="tns:CategoryStatus" />
+  <xs:element name="CreateCategoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateCategoryResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SenderFault">
+    <xs:sequence>
+      <xs:element name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element name="Reason" type="tns:SenderFaultReason" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SenderFault" nillable="true" type="tns:SenderFault" />
+  <xs:simpleType name="SenderFaultReason">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unspecified" />
+      <xs:enumeration value="InvalidArgument" />
+      <xs:enumeration value="NullOrEmptyArgument" />
+      <xs:enumeration value="InvalidFormat" />
+      <xs:enumeration value="ValueOutOfRange" />
+      <xs:enumeration value="Overflow" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SenderFaultReason" nillable="true" type="tns:SenderFaultReason" />
+  <xs:complexType name="UserAuthFault">
+    <xs:sequence>
+      <xs:element name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element name="Reason" type="tns:UserAuthFaultReason" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserAuthFault" nillable="true" type="tns:UserAuthFault" />
+  <xs:simpleType name="UserAuthFaultReason">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unspecified" />
+      <xs:enumeration value="AuthenticationFailed" />
+      <xs:enumeration value="InactiveUser" />
+      <xs:enumeration value="PremiumTagCreationDenied" />
+      <xs:enumeration value="InsufficientFeaturePermission" />
+      <xs:enumeration value="InvalidFeaturePermission" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UserAuthFaultReason" nillable="true" type="tns:UserAuthFaultReason" />
+  <xs:complexType name="ReceiverFault">
+    <xs:sequence>
+      <xs:element name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element name="Reason" type="tns:ReceiverFaultReason" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReceiverFault" nillable="true" type="tns:ReceiverFault" />
+  <xs:simpleType name="ReceiverFaultReason">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unspecified" />
+      <xs:enumeration value="InternalError" />
+      <xs:enumeration value="RuleFailure" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ReceiverFaultReason" nillable="true" type="tns:ReceiverFaultReason" />
+  <xs:complexType name="CategoryFault">
+    <xs:sequence>
+      <xs:element name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element name="Reason" type="tns:CategoryFaultReason" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CategoryFault" nillable="true" type="tns:CategoryFault" />
+  <xs:simpleType name="CategoryFaultReason">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unspecified" />
+      <xs:enumeration value="DuplicateName" />
+      <xs:enumeration value="NotFound" />
+      <xs:enumeration value="InvalidStatus" />
+      <xs:enumeration value="Blocked" />
+      <xs:enumeration value="CascadeDelete" />
+      <xs:enumeration value="DefaultCategoryDelete" />
+      <xs:enumeration value="RangeSearchNotSupported" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CategoryFaultReason" nillable="true" type="tns:CategoryFaultReason" />
+  <xs:element name="UpdateCategory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userCredential" nillable="true" type="tns:UserCredential" />
+        <xs:element minOccurs="0" name="existingCategoryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="category" nillable="true" type="tns:Category" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCategoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateCategoryResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActivateCategory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userCredential" nillable="true" type="tns:UserCredential" />
+        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActivateCategoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ActivateCategoryResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PauseCategory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userCredential" nillable="true" type="tns:UserCredential" />
+        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PauseCategoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PauseCategoryResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateTag">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userCredential" nillable="true" type="tns:UserCredential" />
+        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tag" nillable="true" type="tns:Tag" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="Tag">
+    <xs:sequence>
+      <xs:element name="Title" nillable="true" type="xs:string" />
+      <xs:element name="InteractionNote" nillable="true" type="xs:string" />
+      <xs:element name="Status" type="tns:TagStatus" />
+      <xs:element name="Types" type="tns:ImageTypes" />
+      <xs:element name="UTCStartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UTCEndDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AssociatedPayload" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Tag" nillable="true" type="tns:Tag" />
+  <xs:simpleType name="TagStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Active" />
+      <xs:enumeration value="Paused" />
+      <xs:enumeration value="Delete" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TagStatus" nillable="true" type="tns:TagStatus" />
+  <xs:simpleType name="ImageTypes">
+    <xs:list>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="pdf" />
+          <xs:enumeration value="wmf" />
+          <xs:enumeration value="jpeg">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="png">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="gif">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="tiff">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="tag">
+            <xs:annotation>
+              <xs:appinfo>
+                <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:list>
+  </xs:simpleType>
+  <xs:element name="ImageTypes" nillable="true" type="tns:ImageTypes" />
+  <xs:complexType name="DialerTag">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Tag">
+        <xs:sequence>
+          <xs:element name="PhoneNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DialerTag" nillable="true" type="tns:DialerTag" />
+  <xs:complexType name="URITag">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Tag">
+        <xs:sequence>
+          <xs:element name="MedFiUrl" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="URITag" nillable="true" type="tns:URITag" />
+  <xs:complexType name="AppDownloadTag">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Tag">
+        <xs:sequence>
+          <xs:element name="DefaultUrl" nillable="true" type="xs:string" />
+          <xs:element name="WP7Url" nillable="true" type="xs:string" />
+          <xs:element name="IPhoneUrl" nillable="true" type="xs:string" />
+          <xs:element name="AndroidUrl" nillable="true" type="xs:string" />
+          <xs:element name="BlackberryUrl" nillable="true" type="xs:string" />
+          <xs:element name="SymbianUrl" nillable="true" type="xs:string" />
+          <xs:element name="J2MEUrl" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AppDownloadTag" nillable="true" type="tns:AppDownloadTag" />
+  <xs:complexType name="FreeTextTag">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Tag">
+        <xs:sequence>
+          <xs:element name="FreeText" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="FreeTextTag" nillable="true" type="tns:FreeTextTag" />
+  <xs:complexType name="VCardTag">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Tag">
+        <xs:sequence>
+          <xs:element name="HasFile" type="xs:boolean" />
+          <xs:element minOccurs="0" name="VcfData" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WorkPhone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MobilePhone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Fax" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Street" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Zip" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WebPage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HomePhone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Department" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="JobTitle" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IMAddress" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VCardTag" nillable="true" type="tns:VCardTag" />
+  <xs:element name="CreateTagResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateTagResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="TagFault">
+    <xs:sequence>
+      <xs:element name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element name="Reason" type="tns:TagFaultReason" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TagFault" nillable="true" type="tns:TagFault" />
+  <xs:simpleType name="TagFaultReason">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unspecified" />
+      <xs:enumeration value="DuplicateName" />
+      <xs:enumeration value="NotFound" />
+      <xs:enumeration value="InvalidStatus" />
+      <xs:enumeration value="Paused" />
+      <xs:enumeration value="Blocked" />
+      <xs:enumeration value="Frozen" />
+      <xs:enumeration value="FourRowBarcodeLimitExceed" />
+      <xs:enumeration value="InvalidTagType" />
+      <xs:enumeration value="DatesConflict" />
+      <xs:enumeration value="PropertyUpdateNotAllowed" />
+      <xs:enumeration value="RangeSearchNotSupported" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TagFaultReason" nillable="true" type="tns:TagFaultReason" />
+  <xs:element name="ActivateTag">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userCredential" nillable="true" type="tns:UserCredential" />
+        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tagName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActivateTagResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ActivateTagResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PauseTag">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userCredential" nillable="true" type="tns:UserCredential" />
+        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tagName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PauseTagResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PauseTagResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteTag">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userCredential" nillable="true" type="tns:UserCredential" />
+        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tagName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteTagResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteTagResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTag">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userCredential" nillable="true" type="tns:UserCredential" />
+        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="existingTagName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tag" nillable="true" type="tns:Tag" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTagResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateTagResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTagByTagName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userCredential" nillable="true" type="tns:UserCredential" />
+        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tagName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTagByTagNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetTagByTagNameResult" type="tns:Tag" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBarcode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userCredential" nillable="true" type="tns:UserCredential" />
+        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tagName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="imageType" type="tns:ImageTypes" />
+        <xs:element minOccurs="0" name="sizeInInches" type="xs:float" />
+        <xs:element minOccurs="0" name="decorationsType" type="tns:DecorationType" />
+        <xs:element minOccurs="0" name="isBlackWhite" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="DecorationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="HCCBRP_DECORATION_NONE" />
+      <xs:enumeration value="HCCBRP_DECORATION_DOWNLOAD">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="HCCBENCODEFLAG_STYLIZED">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">19</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="HCCBRP_DECORATION_FRAMEPLAIN">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="HCCBRP_DECORATION_TEXT">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">32</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DecorationType" nillable="true" type="tns:DecorationType" />
+  <xs:element name="GetBarcodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBarcodeResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BarCodeFault">
+    <xs:sequence>
+      <xs:element name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element name="Reason" type="tns:BarCodeFaultReason" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BarCodeFault" nillable="true" type="tns:BarCodeFault" />
+  <xs:simpleType name="BarCodeFaultReason">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unspecified" />
+      <xs:enumeration value="InsufficientFeaturePermission" />
+      <xs:enumeration value="ImageGenerationFail" />
+      <xs:enumeration value="Overflow" />
+      <xs:enumeration value="IncorrectFormat" />
+      <xs:enumeration value="BlackAndWhiteFourRowBarcodeNotAllowed" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BarCodeFaultReason" nillable="true" type="tns:BarCodeFaultReason" />
+  <xs:element name="GetTagId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userCredential" nillable="true" type="tns:UserCredential" />
+        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tagName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTagIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetTagIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
