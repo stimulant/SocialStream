@@ -1120,14 +1120,14 @@ namespace FeedProcessor
                         FeedItem previousItem = (from i in feedItemList where i.Date > itemDate select i).LastOrDefault();
                         if (previousItem != null)
                         {
-                            newItemIndex = feedItemList.IndexOf(previousItem);
+                            newItemIndex = feedItemList.IndexOf(previousItem) + 1;
                         }
                     }
 
                     if (_itemIndexes.ContainsKey(feedItem.ContentType))
                     {
                         // Insert new items so they come up next in the stream.
-                        newItemIndex = Math.Max(newItemIndex, _itemIndexes[feedItem.ContentType]);
+                        //newItemIndex = Math.Max(newItemIndex, _itemIndexes[feedItem.ContentType]);
                     }
 
                     newItemIndex = Math.Min(newItemIndex, feedItemList.Count);

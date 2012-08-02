@@ -2,7 +2,7 @@
 
 <!-- Define some installer-wide variables. -->
 <?define UpgradeCode="BD6A935B-B751-44D0-9EE7-0E976F605DB6"?>
-<?define CurrentVersion="2.0.0"?>
+<?define CurrentVersion="2.1.622.0"?>
 
 <!-- Modify these lines to suit the needs of the current app. -->
 <?define WelcomeDialogTitle="{\WixUI_Font_Bigger}Welcome to the [ProductName] [ProductVersion] Setup Wizard"?>

@@ -143,7 +143,6 @@
     <Compile Include="Validators\IsValidDateRule.cs" />
     <Compile Include="Validators\IsValidUriRule.cs" />
     <Compile Include="VO\BindableStringVO.cs" />
-    <CodeAnalysisDictionary Include="CustomDictionary.xml" />
     <Compile Include="Helpers\BindableBase.cs" />
     <Compile Include="Helpers\VisualEnumerables.cs" />
     <Compile Include="Validators\IsValidSizeRule.cs" />
@@ -282,8 +281,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+    <PreBuildEvent></PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>cd "$(OutDir)"
@@ -293,7 +291,16 @@ copy Profanity.txt Profanity.txt.default
 cd Resources
 copy WindowBackground.png WindowBackground.png.default
 copy WindowBackground_Vertical.png WindowBackground_Vertical.png.default
-</PostBuildEvent>
+
+goto :$(ConfigurationName)
+
+:Release
+
+goto :exit
+
+:Debug
+
+:exit</PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.0\Microsoft.Expression.Blend.WPF.targets" />
 </Project>
