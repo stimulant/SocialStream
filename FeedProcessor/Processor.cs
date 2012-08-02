@@ -1127,7 +1127,7 @@ namespace FeedProcessor
                     if (_itemIndexes.ContainsKey(feedItem.ContentType))
                     {
                         // Insert new items so they come up next in the stream.
-                        //newItemIndex = Math.Max(newItemIndex, _itemIndexes[feedItem.ContentType]);
+                        newItemIndex = Math.Max(newItemIndex, _itemIndexes[feedItem.ContentType]);
                     }
 
                     newItemIndex = Math.Min(newItemIndex, feedItemList.Count);
