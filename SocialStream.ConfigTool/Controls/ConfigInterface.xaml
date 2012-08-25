@@ -52,6 +52,9 @@
       <TabItem Header="{x:Static props:Resources.Twitter}">
         <controls:TwitterEditor />
       </TabItem>
+	  <TabItem Header="{x:Static props:Resources.Facebook}">
+        <controls:FacebookEditor />
+      </TabItem>
       <TabItem Header="{x:Static props:Resources.Flickr}">
         <controls:FlickrEditor />
       </TabItem>

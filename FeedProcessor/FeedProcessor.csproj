@@ -69,6 +69,10 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Facebook.6.0.16\lib\net40-client\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -86,6 +90,8 @@
     <Compile Include="Contracts\TwitterJsonStatus.cs" />
     <Compile Include="Contracts\TwitterJsonUser.cs" />
     <Compile Include="Enums\RetrievalOrder.cs" />
+    <Compile Include="Feeds\FacebookPageFeed.cs" />
+    <Compile Include="Feeds\FlickrGroupFeed.cs" />
     <Compile Include="Feeds\FlickrUserFeed.cs" />
     <Compile Include="Feeds\NewsFeed.cs" />
     <Compile Include="Feeds\TwitterStreamingFeed.cs" />
@@ -109,6 +115,9 @@
     <Compile Include="SourceStatusUpdatedEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
+    <CodeAnalysisDictionary Include="CustomDictionary.xml" />
+  </ItemGroup>
+  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -125,5 +134,8 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>

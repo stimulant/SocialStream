@@ -283,6 +283,105 @@
         <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="GetDirectUrl">
+      <soap:operation soapAction="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetDirectUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReceiverFaultFault">
+        <soap:fault use="literal" name="ReceiverFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="CategoryFaultFault">
+        <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="TagFaultFault">
+        <soap:fault use="literal" name="TagFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UserAuthFaultFault">
+        <soap:fault use="literal" name="UserAuthFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SenderFaultFault">
+        <soap:fault use="literal" name="SenderFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetQRUrl">
+      <soap:operation soapAction="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetQRUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CategoryFaultFault">
+        <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ReceiverFaultFault">
+        <soap:fault use="literal" name="ReceiverFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="TagFaultFault">
+        <soap:fault use="literal" name="TagFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UserAuthFaultFault">
+        <soap:fault use="literal" name="UserAuthFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SenderFaultFault">
+        <soap:fault use="literal" name="SenderFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetNfcUrl">
+      <soap:operation soapAction="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetNfcUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="SenderFaultFault">
+        <soap:fault use="literal" name="SenderFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ReceiverFaultFault">
+        <soap:fault use="literal" name="ReceiverFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="CategoryFaultFault">
+        <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="TagFaultFault">
+        <soap:fault use="literal" name="TagFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UserAuthFaultFault">
+        <soap:fault use="literal" name="UserAuthFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetQRCode">
+      <soap:operation soapAction="http://www.ws.tag.microsoft.com/ver1/IMIBPContract/GetQRCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="SenderFaultFault">
+        <soap:fault use="literal" name="SenderFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="CategoryFaultFault">
+        <soap:fault use="literal" name="CategoryFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="TagFaultFault">
+        <soap:fault use="literal" name="TagFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ReceiverFaultFault">
+        <soap:fault use="literal" name="ReceiverFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BarCodeFaultFault">
+        <soap:fault use="literal" name="BarCodeFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UserAuthFaultFault">
+        <soap:fault use="literal" name="UserAuthFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="MIBPService">
     <wsdl:port name="BasicHttpBinding_IMIBPContract" binding="tns:BasicHttpBinding_IMIBPContract">

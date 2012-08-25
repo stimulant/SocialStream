@@ -40,7 +40,6 @@
     <Optimize>false</Optimize>
     <OutputPath>.\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <PlatformTarget>x86</PlatformTarget>
     <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
@@ -211,9 +210,7 @@
     <Compile Include="Helpers\TouchChangedEvents.cs" />
     <Compile Include="Helpers\VisualEnumerable.cs" />
     <Compile Include="Helpers\VisualTree.cs" />
-    <Compile Include="MouseTouchDevice.cs">
-      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
-    </Compile>
+    <Compile Include="MouseTouchDevice.cs"/>
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Resources\Audio\Audio.xgs">
@@ -269,6 +266,7 @@
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <Content Include="Profanity.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

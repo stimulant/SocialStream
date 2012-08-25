@@ -70,6 +70,9 @@ namespace FeedProcessor.Net
             }
             catch
             {
+#if DEBUG
+                throw;
+#endif
                 Result(this, new AsyncWebResultEventArgs(null, HttpStatusCode.ServiceUnavailable));
             }
         }

@@ -612,6 +612,7 @@
           <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
+			<RowDefinition />
           </Grid.RowDefinitions>
           <controls:AdminIndicatorLight Grid.Row="0" Grid.Column="0" IsOn="{Binding FeedProcessor.IsTwitterUp}" Visibility="{Binding TwitterQuery, Converter={StaticResource VisibilityConverter}, Source={x:Static props:Settings.Default}}" />
           <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Converter={StaticResource TitleCaseConverter}, Source={x:Static props:Resources.Twitter}}" Visibility="{Binding TwitterQuery, Converter={StaticResource VisibilityConverter}, Source={x:Static props:Settings.Default}}" />
@@ -620,6 +621,11 @@
           <controls:AdminIndicatorLight Grid.Row="1" Grid.Column="0" IsOn="{Binding FeedProcessor.IsFlickrUp}" Visibility="{Binding FlickrQuery, Converter={StaticResource VisibilityConverter}, Source={x:Static props:Settings.Default}}" />
           <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Converter={StaticResource TitleCaseConverter}, Source={x:Static props:Resources.Flickr}}" Visibility="{Binding FlickrQuery, Converter={StaticResource VisibilityConverter}, Source={x:Static props:Settings.Default}}" />
           <TextBlock Grid.Row="1" Grid.Column="1" TextAlignment="Right" Opacity="0.6" Text="{Binding FeedProcessor.LastFlickrUpdate, StringFormat={x:Static props:Resources.DateTimeFormat}}" Visibility="{Binding FlickrQuery, Converter={StaticResource VisibilityConverter}, Source={x:Static props:Settings.Default}}" />
+		  
+		  <controls:AdminIndicatorLight Grid.Row="2" Grid.Column="0" IsOn="{Binding FeedProcessor.IsFacebookUp}" Visibility="{Binding FacebookQuery, Converter={StaticResource VisibilityConverter}, Source={x:Static props:Settings.Default}}" />
+          <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Converter={StaticResource TitleCaseConverter}, Source={x:Static props:Resources.Facebook}}" Visibility="{Binding FacebookQuery, Converter={StaticResource VisibilityConverter}, Source={x:Static props:Settings.Default}}" />
+          <TextBlock Grid.Row="2" Grid.Column="1" TextAlignment="Right" Opacity="0.6" Text="{Binding FeedProcessor.LastFacebookUpdate, StringFormat={x:Static props:Resources.DateTimeFormat}}" Visibility="{Binding FacebookQuery, Converter={StaticResource VisibilityConverter}, Source={x:Static props:Settings.Default}}" />
+		  
         </Grid>
 
 
@@ -629,6 +635,7 @@
               <Binding Source="{x:Static props:Settings.Default}" Path="FlickrBans" />
               <Binding Source="{x:Static props:Settings.Default}" Path="TwitterBans" />
               <Binding Source="{x:Static props:Settings.Default}" Path="NewsBans" />
+              <Binding Source="{x:Static props:Settings.Default}" Path="FacebookBans" />
             </MultiBinding>
           </s:SurfaceButton.Visibility>
           <TextBlock Text="{Binding Converter={StaticResource TitleCaseConverter}, Source={x:Static props:Resources.RemoveBans}}" />
@@ -640,6 +647,7 @@
               <Binding Source="{x:Static props:Settings.Default}" Path="FlickrBans" />
               <Binding Source="{x:Static props:Settings.Default}" Path="TwitterBans" />
               <Binding Source="{x:Static props:Settings.Default}" Path="NewsBans" />
+              <Binding Source="{x:Static props:Settings.Default}" Path="FacebookBans" />
             </MultiBinding>
           </TextBlock.Visibility>
         </TextBlock>

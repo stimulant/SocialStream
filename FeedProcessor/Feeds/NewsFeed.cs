@@ -74,8 +74,10 @@ namespace FeedProcessor.Feeds
         /// </summary>
         /// <param name="response">response from the feed service.</param>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Justification = "Sorry for the complexity."), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "Yes, really want to catch all exceptions here.")]
-        internal override void ProcessResponse(string response)
+        internal override void ProcessResponse(object responseObject)
         {
+            string response = responseObject.ToString();
+
             try
             {
                 using (StringReader stringReader = new StringReader(response))

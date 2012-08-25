@@ -1,4 +1,4 @@
-<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="http://schemas.microsoft.com/surface/2008" xmlns:controls="clr-namespace:SocialStream.Controls" xmlns:helpers="clr-namespace:SocialStream.Helpers" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:props="clr-namespace:SocialStream.Properties" xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" mc:Ignorable="d" x:Class="SocialStream.Controls.RiverContent.SmallTweet" xmlns:feeditems="clr-namespace:FeedProcessor.FeedItems;assembly=FeedProcessor" d:DesignWidth="335" d:DesignHeight="96.92">
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="http://schemas.microsoft.com/surface/2008" xmlns:controls="clr-namespace:SocialStream.Controls" xmlns:helpers="clr-namespace:SocialStream.Helpers" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:props="clr-namespace:SocialStream.Properties" xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" mc:Ignorable="d" x:Class="SocialStream.Controls.RiverContent.SmallTweet" xmlns:feeditems="clr-namespace:FeedProcessor.FeedItems;assembly=FeedProcessor" d:DesignWidth="335" d:DesignHeight="96.92">
   <UserControl.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
@@ -24,7 +24,7 @@
         <VisualState x:Name="NotPressedState" />
       </VisualStateGroup>
     </VisualStateManager.VisualStateGroups>
-    <Border x:Name="_background" Opacity="{Binding Source={x:Static props:Settings.Default}, Path=TweetOpacity}" Background="Black" />
+    <Border x:Name="_background" Opacity="{Binding Source={x:Static props:Settings.Default}, Path=TweetOpacity}" Background="{DynamicResource SocialThemeBrush}" />
     <Grid Margin="6">
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
@@ -35,8 +35,8 @@
           <ColumnDefinition Width="Auto" />
           <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBlock Text="{Binding Author}" FontSize="14" TextTrimming="CharacterEllipsis" Opacity=".5" />
-        <TextBlock Grid.Column="1" Text="{Binding Date, Converter={StaticResource RelativeTimeConverter}}" FontSize="8" Opacity=".5" TextAlignment="Right" VerticalAlignment="Bottom">
+        <TextBlock Foreground="{DynamicResource SocialForegroundBrush}" Text="{Binding Author}" FontSize="14" TextTrimming="CharacterEllipsis" Opacity=".5" />
+        <TextBlock Grid.Column="1" Foreground="{DynamicResource SocialForegroundBrush}" Text="{Binding Date, Converter={StaticResource RelativeTimeConverter}}" FontSize="8" Opacity=".5" TextAlignment="Right" VerticalAlignment="Bottom">
           <i:Interaction.Behaviors>
             <helpers:RefreshBindingBehavior PropertyToRefresh="Text" />
           </i:Interaction.Behaviors>
@@ -48,7 +48,7 @@
           <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <controls:ImageLoader Style="{DynamicResource ImageLoaderStyle}" UriSource="{Binding AvatarUri}" Margin="0,0,6,0" Label="{x:Static props:Resources.Avatar}" ClipToBounds="True" HorizontalAlignment="Center" VerticalAlignment="Top" Width="38" Height="38" RenderAtSize="true" />
-        <TextBlock Grid.Column="1" Text="{Binding Status}" TextWrapping="Wrap" FontSize="10" TextTrimming="WordEllipsis" VerticalAlignment="Top" />
+        <TextBlock Foreground="{DynamicResource SocialForegroundBrush}" Grid.Column="1" Text="{Binding Status}" TextWrapping="Wrap" FontSize="10" TextTrimming="WordEllipsis" VerticalAlignment="Top" />
       </Grid>
     </Grid>
   </Grid>

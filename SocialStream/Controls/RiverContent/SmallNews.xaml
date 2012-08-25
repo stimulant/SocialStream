@@ -1,4 +1,4 @@
-<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="http://schemas.microsoft.com/surface/2008" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:props="clr-namespace:SocialStream.Properties" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="SocialStream.Controls.RiverContent.SmallNews" d:DesignWidth="217" d:DesignHeight="83" xmlns:feeditems="clr-namespace:FeedProcessor.FeedItems;assembly=FeedProcessor">
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="http://schemas.microsoft.com/surface/2008" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:props="clr-namespace:SocialStream.Properties" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="SocialStream.Controls.RiverContent.SmallNews" d:DesignWidth="217" d:DesignHeight="83" xmlns:feeditems="clr-namespace:FeedProcessor.FeedItems;assembly=FeedProcessor">
   <UserControl.Resources>
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
@@ -24,7 +24,7 @@
         <VisualState x:Name="NotPressedState" />
       </VisualStateGroup>
     </VisualStateManager.VisualStateGroups>
-    <Border x:Name="_background" Opacity="{Binding Source={x:Static props:Settings.Default}, Path=NewsOpacity}" Background="{DynamicResource ThemeBrush}" />
+    <Border x:Name="_background" Opacity="{Binding Source={x:Static props:Settings.Default}, Path=NewsOpacity}" Background="{DynamicResource NewsThemeBrush}" />
     <Grid Margin="6">
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
@@ -34,15 +34,15 @@
       <TextBlock Text="{Binding Title}" FontSize="14" TextWrapping="Wrap" TextTrimming="WordEllipsis" LineStackingStrategy="BlockLineHeight" LineHeight="17" />
       <TextBlock Grid.Row="1" Text="{Binding Summary}" FontSize="10" TextWrapping="Wrap" TextTrimming="WordEllipsis" Margin="0,4,0,0" />
       <StackPanel Grid.Row="2" Orientation="Horizontal" Opacity=".5">
-        <TextBlock FontSize="9" Foreground="{DynamicResource ForegroundBrush}" Text="{x:Static props:Resources.Posted}" />
-        <TextBlock FontSize="9" Foreground="{DynamicResource ForegroundBrush}">
+        <TextBlock FontSize="9" Foreground="{DynamicResource NewsForegroundBrush}" Text="{x:Static props:Resources.Posted}" />
+        <TextBlock FontSize="9" Foreground="{DynamicResource NewsForegroundBrush}">
           <TextBlock.Text>
             <Binding Path="Date" StringFormat="{x:Static props:Resources.DateFormat}" />
           </TextBlock.Text>
         </TextBlock>
         <StackPanel Orientation="Horizontal" Visibility="{Binding Path=Author, Converter={StaticResource VisibilityConverter}}">
-          <TextBlock FontSize="9" Foreground="{DynamicResource ForegroundBrush}" Text="{x:Static props:Resources.By}" />
-          <TextBlock TextTrimming="CharacterEllipsis" FontSize="9" Foreground="{DynamicResource ForegroundBrush}" Text="{Binding Path=Author}" />
+          <TextBlock FontSize="9" Foreground="{DynamicResource NewsForegroundBrush}" Text="{x:Static props:Resources.By}" />
+          <TextBlock TextTrimming="CharacterEllipsis" FontSize="9" Foreground="{DynamicResource NewsForegroundBrush}" Text="{Binding Path=Author}" />
         </StackPanel>
       </StackPanel>
     </Grid>

@@ -2,6 +2,9 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SocialStream.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
+    <Setting Name="NewsThemeColor" Type="System.Windows.Media.Color" Scope="Application">
+      <Value Profile="(Default)">#FF000000</Value>
+    </Setting>
     <Setting Name="AutoScrollSpeed" Type="System.Double" Scope="Application">
       <Value Profile="(Default)">22</Value>
     </Setting>
@@ -11,11 +14,23 @@
     <Setting Name="FlickrPollInterval" Type="System.TimeSpan" Scope="Application">
       <Value Profile="(Default)">00:20:00</Value>
     </Setting>
+    <Setting Name="TwitterQuery" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">@stimulant,microsoft,microsoft pixelsense,@mspixelsense,SUR40</Value>
+    </Setting>
+    <Setting Name="FlickrQuery" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">microsoft pixelsense,pixelsense,SUR40</Value>
+    </Setting>
+    <Setting Name="NewsQuery" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://blogs.msdn.com/b/pixelsense/rss.aspx,http://stimulant.io/wp/index.php/feed/</Value>
+    </Setting>
     <Setting Name="IsProfanityFilterEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="ItemTimeoutBack" Type="System.TimeSpan" Scope="Application">
       <Value Profile="(Default)">00:00:45</Value>
+    </Setting>
+    <Setting Name="MinFeedItemDate" Type="System.DateTime" Scope="Application">
+      <Value Profile="(Default)">2010-01-01</Value>
     </Setting>
     <Setting Name="TwitterPollInterval" Type="System.TimeSpan" Scope="Application">
       <Value Profile="(Default)">00:10:00</Value>
@@ -23,8 +38,8 @@
     <Setting Name="NewsPollInterval" Type="System.TimeSpan" Scope="Application">
       <Value Profile="(Default)">00:05:00</Value>
     </Setting>
-    <Setting Name="ForegroundColor" Type="System.Windows.Media.Color" Scope="Application">
-      <Value Profile="(Default)">#FFFFFFFF</Value>
+    <Setting Name="NewsForegroundColor" Type="System.Windows.Media.Color" Scope="Application">
+      <Value Profile="(Default)">#FFEEEEEE</Value>
     </Setting>
     <Setting Name="MinNewsSize" Type="System.Windows.Size" Scope="Application">
       <Value Profile="(Default)">325,270</Value>
@@ -45,7 +60,7 @@
       <Value Profile="(Default)">500,500</Value>
     </Setting>
     <Setting Name="VisualizationColor" Type="System.Windows.Media.Color" Scope="Application">
-      <Value Profile="(Default)">#FFEA1F68</Value>
+      <Value Profile="(Default)">#FFE2E65B</Value>
     </Setting>
     <Setting Name="RetrievalOrder" Type="FeedProcessor.Enums.RetrievalOrder" Scope="User">
       <Value Profile="(Default)">Chronological</Value>
@@ -63,10 +78,16 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="TwitterBans" Type="System.String" Scope="User">
-      <Value Profile="(Default)">lnk.ms</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="NewsBans" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TweetOpacity" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">0.9</Value>
+    </Setting>
+    <Setting Name="NewsOpacity" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">0.9</Value>
     </Setting>
     <Setting Name="AdminTimeoutDelay" Type="System.TimeSpan" Scope="Application">
       <Value Profile="(Default)">00:05:00</Value>
@@ -74,44 +95,50 @@
     <Setting Name="EnableContentResizing" Type="System.Boolean" Scope="Application">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="TwitterUsername" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">endquote</Value>
+    </Setting>
     <Setting Name="FlickrApiKey" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">260dcf58afc10cfc52b11a8c94a1a03f</Value>
+      <Value Profile="(Default)">187765a21536000ef6ea4bcd417de147</Value>
     </Setting>
     <Setting Name="MicrosoftTagApiKey" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">29c3af2f-ff8b-4ffa-b3c5-6ab8a4d24d78</Value>
+      <Value Profile="(Default)">18c0f449-774c-41f0-81aa-df62b9181ef5</Value>
     </Setting>
     <Setting Name="AdminByteTagSeries" Type="System.Int64" Scope="Application">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="TwitterPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">twitquote</Value>
+    </Setting>
     <Setting Name="AutoScrollDirection" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">-1</Value>
     </Setting>
-    <Setting Name="ThemeColor" Type="System.Windows.Media.Color" Scope="Application">
-      <Value Profile="(Default)">#FF555555</Value>
+    <Setting Name="FacebookPollInterval" Type="System.TimeSpan" Scope="Application">
+      <Value Profile="(Default)">00:20:00</Value>
     </Setting>
-    <Setting Name="TwitterQuery" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">microsoft,microsoft pixelsense,@mspixelsense,SUR40</Value>
-    </Setting>
-    <Setting Name="FlickrQuery" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">microsoft pixelsense,pixelsense,SUR40</Value>
-    </Setting>
-    <Setting Name="NewsQuery" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">http://blogs.msdn.com/b/pixelsense/rss.aspx</Value>
-    </Setting>
-    <Setting Name="MinFeedItemDate" Type="System.DateTime" Scope="Application">
-      <Value Profile="(Default)">2012-06-19</Value>
-    </Setting>
-    <Setting Name="TweetOpacity" Type="System.Double" Scope="Application">
-      <Value Profile="(Default)">0.65</Value>
-    </Setting>
-    <Setting Name="NewsOpacity" Type="System.Double" Scope="Application">
-      <Value Profile="(Default)">0.65</Value>
-    </Setting>
-    <Setting Name="TwitterUsername" Type="System.String" Scope="Application">
+    <Setting Name="FacebookQuery" Type="System.String" Scope="Application">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="TwitterPassword" Type="System.String" Scope="Application">
+    <Setting Name="FacebookBans" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FacebookClientId" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">178605258932857</Value>
+    </Setting>
+    <Setting Name="FacebookClientSecret" Type="System.String" Scope="User">
+      <Value Profile="(Default)">76345d05752e9c34bc48592a4952e151</Value>
+    </Setting>
+    <Setting Name="DisplayFbContentFromOthers" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SocialThemeColor" Type="System.Windows.Media.Color" Scope="Application">
+      <Value Profile="(Default)">#FF666666</Value>
+    </Setting>
+    <Setting Name="SocialForegroundColor" Type="System.Windows.Media.Color" Scope="Application">
+      <Value Profile="(Default)">#FFE2E65B</Value>
+    </Setting>
+    <Setting Name="NewItemBorderColor" Type="System.Windows.Media.Color" Scope="Application">
+      <Value Profile="(Default)">#FFFFFFFF</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -185,6 +185,7 @@ namespace SocialStream.Controls
                     TagBack tag = Backside.FindVisualChild<TagBack>();
                     if (tag != null)
                     {
+                        tag.DataContext = DataContext;
                         if (_feedItem == null)
                         {
                             tag.TagName = string.Empty;

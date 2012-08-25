@@ -17,7 +17,7 @@
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <Utf8Output>true</Utf8Output>
-    <ExpressionBlendVersion>4.0.20901.0</ExpressionBlendVersion>
+    <ExpressionBlendVersion>4.0.20525.0</ExpressionBlendVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -43,7 +43,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
@@ -93,6 +92,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command\AddFacebookBanCommand.cs" />
+    <Compile Include="Command\AddFacebookQueryCommand.cs" />
     <Compile Include="Command\CancelCommand.cs" />
     <Compile Include="Command\AddFlickrBanCommand.cs" />
     <Compile Include="Command\AddFlickrQueryCommand.cs" />
@@ -101,6 +102,8 @@
     <Compile Include="Command\AddTwitterBanCommand.cs" />
     <Compile Include="Command\AddTwitterQueryCommand.cs" />
     <Compile Include="Command\LoadDefaultsCommand.cs" />
+    <Compile Include="Command\RemoveFacebookBanCommand.cs" />
+    <Compile Include="Command\RemoveFacebookQueryCommand.cs" />
     <Compile Include="Command\RemoveNewsQueryCommand.cs" />
     <Compile Include="Command\RemoveNewsBanCommand.cs" />
     <Compile Include="Command\RemoveTwitterBanCommand.cs" />
@@ -109,6 +112,7 @@
     <Compile Include="Command\RemoveFlickrQueryCommand.cs" />
     <Compile Include="Command\SetAutoScrollDirectionCommand.cs" />
     <Compile Include="Command\SetBackgroundImagePathCommand.cs" />
+    <Compile Include="Command\SetDisplayFbContentFromOthersCommand.cs" />
     <Compile Include="Command\SetEnableContentResizing.cs" />
     <Compile Include="Command\SetDistributeContentEvenlyCommand.cs" />
     <Compile Include="Command\SetProfanityFilterCommand.cs" />
@@ -117,6 +121,9 @@
     </Compile>
     <Compile Include="Controls\AppearanceEditor.xaml.cs">
       <DependentUpon>AppearanceEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FacebookEditor.xaml.cs">
+      <DependentUpon>FacebookEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ProfanityEditor.xaml.cs">
       <DependentUpon>ProfanityEditor.xaml</DependentUpon>
@@ -143,6 +150,7 @@
     <Compile Include="Validators\IsValidDateRule.cs" />
     <Compile Include="Validators\IsValidUriRule.cs" />
     <Compile Include="VO\BindableStringVO.cs" />
+    <CodeAnalysisDictionary Include="CustomDictionary.xml" />
     <Compile Include="Helpers\BindableBase.cs" />
     <Compile Include="Helpers\VisualEnumerables.cs" />
     <Compile Include="Validators\IsValidSizeRule.cs" />
@@ -157,6 +165,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\AppearanceEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\FacebookEditor.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -281,9 +293,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent></PreBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
     <PostBuildEvent>cd "$(OutDir)"
 copy SocialStream.exe.config SocialStream.exe.config.default
 copy SocialStream.vshost.exe.config SocialStream.vshost.exe.config.default
@@ -291,16 +300,7 @@ copy Profanity.txt Profanity.txt.default
 cd Resources
 copy WindowBackground.png WindowBackground.png.default
 copy WindowBackground_Vertical.png WindowBackground_Vertical.png.default
-
-goto :$(ConfigurationName)
-
-:Release
-
-goto :exit
-
-:Debug
-
-:exit</PostBuildEvent>
+</PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.0\Microsoft.Expression.Blend.WPF.targets" />
 </Project>

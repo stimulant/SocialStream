@@ -68,11 +68,18 @@ namespace SocialStream
                 ObservableCollection<string> twitterQuery = new ObservableCollection<string>(Split(Settings.Default.TwitterQuery.Trim()));
                 Split(Settings.Default.TwitterBans.Trim()).ToList().ForEach(ban => twitterQuery.Add(Processor.NegativeQueryMarker + ban));
 
+                ObservableCollection<string> facebookQuery = new ObservableCollection<string>(Split(Settings.Default.FacebookQuery.Trim()));
+                Split(Settings.Default.FacebookBans.Trim()).ToList().ForEach(ban => facebookQuery.Add(Processor.NegativeQueryMarker + ban));
+
                 FeedProcessor = new FeedProcessor.Processor(
                     Settings.Default.FlickrApiKey,
+                    Settings.Default.FacebookClientId,
+                    Settings.Default.FacebookClientSecret,
+                    Settings.Default.DisplayFbContentFromOthers,
                     Settings.Default.FlickrPollInterval,
                     Settings.Default.TwitterPollInterval,
                     Settings.Default.NewsPollInterval,
+                    Settings.Default.FacebookPollInterval,
                     Settings.Default.MinFeedItemDate)
                 {
                     Profanity = new ObservableCollection<string>(File.Exists("Profanity.txt") ? File.ReadAllLines("Profanity.txt") : new string[0]),
@@ -81,7 +88,8 @@ namespace SocialStream
                     RetrievalOrder = RetrievalOrder,
                     FlickrQuery = flickrQuery,
                     NewsQuery = newsQuery,
-                    TwitterQuery = twitterQuery
+                    TwitterQuery = twitterQuery,
+                    FacebookQuery = facebookQuery
                 };
 
                 IsContentLoaded = FeedProcessor.FeedCount == 0;
@@ -149,7 +157,7 @@ namespace SocialStream
         /// <returns>The list split into a string array.</returns>
         private static string[] Split(string list)
         {
-            return list.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            return list.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()).ToArray();
         }
 
         /// <summary>
@@ -436,6 +444,11 @@ namespace SocialStream
                     FeedProcessor.TwitterQuery.Add(Processor.NegativeQueryMarker + term);
                     Settings.Default.TwitterBans += "," + term;
                     break;
+
+                case SourceType.Facebook:
+                    FeedProcessor.FacebookQuery.Add(Processor.NegativeQueryMarker + term);
+                    Settings.Default.FacebookBans += "," + term;
+                    break;
             }
 
             Settings.Default.Save();
@@ -452,6 +465,8 @@ namespace SocialStream
             Settings.Default.TwitterBans = string.Empty;
             Split(Settings.Default.NewsBans).ToList().ForEach(b => FeedProcessor.NewsQuery.Remove(Processor.NegativeQueryMarker + b));
             Settings.Default.NewsBans = string.Empty;
+            Split(Settings.Default.FacebookBans).ToList().ForEach(b => FeedProcessor.FacebookQuery.Remove(Processor.NegativeQueryMarker + b));
+            Settings.Default.FacebookBans = string.Empty;
             Settings.Default.Save();
         }
     }

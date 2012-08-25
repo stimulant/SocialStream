@@ -15,18 +15,28 @@
 
   <props:Settings x:Key="Settings" />
 
-  <Color x:Key="ThemeColor" A="255" R="189" G="44" B="124" />
-  <Color x:Key="ForegroundColor" A="255" R="255" G="255" B="255" />
+  <Color x:Key="NewsThemeColor" A="255" R="189" G="44" B="124" />
+  <Color x:Key="NewsForegroundColor" A="255" R="255" G="255" B="255" />
+  <Color x:Key="SocialThemeColor" A="255" R="189" G="44" B="124" />
+  <Color x:Key="SocialForegroundColor" A="255" R="255" G="255" B="255" />
+  <Color x:Key="TagBackThemeColor" A="255" R="0" G="0" B="0" />
+  <Color x:Key="TagBackForegroundColor" A="255" R="255" G="255" B="255" />
+  <Color x:Key="NewItemBorderColor" A="255" R="189" G="44" B="124" />
 
-  <SolidColorBrush x:Key="ThemeBrush" Color="{DynamicResource ThemeColor}" />
-  <SolidColorBrush x:Key="ForegroundBrush" Color="{DynamicResource ForegroundColor}" />
+  <SolidColorBrush x:Key="NewsThemeBrush" Color="{DynamicResource NewsThemeColor}" />
+  <SolidColorBrush x:Key="NewsForegroundBrush" Color="{DynamicResource NewsForegroundColor}" />
+  <SolidColorBrush x:Key="SocialThemeBrush" Color="{DynamicResource SocialThemeColor}" />
+  <SolidColorBrush x:Key="SocialForegroundBrush" Color="{DynamicResource SocialForegroundColor}" />
+  <SolidColorBrush x:Key="TagBackThemeBrush" Color="{DynamicResource TagBackThemeColor}" />
+  <SolidColorBrush x:Key="TagBackForegroundBrush" Color="{DynamicResource TagBackForegroundColor}" />
+  <SolidColorBrush x:Key="NewItemBorderBrush" Color="{DynamicResource NewItemBorderColor}" />  
 
-  <FontFamily x:Key="MainFont">Segoe360</FontFamily>
+    <FontFamily x:Key="MainFont">Segoe360</FontFamily>
   <FontFamily x:Key="HeaderFont">/SocialStream;component/Fonts/#Segoe UI Light</FontFamily>
 
   <Style TargetType="{x:Type TextBlock}">
     <Setter Property="FontFamily" Value="{DynamicResource MainFont}" />
-    <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource NewsForegroundBrush}"/>
   </Style>
 
   <Style TargetType="{x:Type controls:ManipulationViewport}" x:Key="ManipulationViewportStyle">
@@ -200,7 +210,7 @@
           <ControlTemplate.Resources>
             <Storyboard x:Key="Breaking" AutoReverse="True" RepeatBehavior="3x">
               <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="_breaking">
-                <SplineDoubleKeyFrame KeyTime="0:0:1.5" Value="0.6" KeySpline="1,0,1,1"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:1.5" Value="1.0" KeySpline="1,0,1,1"/>
               </DoubleAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Key="ShowAdmin">
@@ -224,7 +234,7 @@
             <rivercontent:SmallImage x:Name="PART_SmallImage" Visibility="Collapsed" />
             <rivercontent:SmallNews x:Name="PART_SmallNews" Visibility="Collapsed" />
             <rivercontent:SmallTweet x:Name="PART_SmallTweet" Visibility="Collapsed" />
-            <Border x:Name="_breaking" BorderBrush="{DynamicResource ForegroundBrush}" BorderThickness="2" Opacity="0" />
+            <Border x:Name="_breaking" BorderBrush="{DynamicResource NewItemBorderBrush}" BorderThickness="6" Opacity="0" />
             <StackPanel x:Name="PART_AdminControls" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" IsHitTestVisible="False" Opacity="0" Visibility="Visible">
               <s:SurfaceButton x:Name="PART_DeleteBtn" Width="40" Height="40" Padding="0" Style="{DynamicResource AdminButtonStyle}" Margin="0,0,2,0">
                 <Grid>
@@ -252,7 +262,7 @@
                 </Grid> 			
               </s:SurfaceButton>
             </StackPanel>
-            <Border x:Name="_cover" Opacity="0" IsHitTestVisible="False" Background="{DynamicResource ThemeBrush}"/>
+            <Border x:Name="_cover" Opacity="0" IsHitTestVisible="False" Background="{DynamicResource NewsThemeBrush}"/>
           </Grid>
           <ControlTemplate.Triggers>
             <Trigger Property="IsAdminTagPresent" Value="True">
@@ -292,7 +302,7 @@
             <rivercontent:SmallImage x:Name="PART_SmallImage" Visibility="Collapsed" />
             <rivercontent:SmallNews x:Name="PART_SmallNews" Visibility="Collapsed" />
             <rivercontent:SmallTweet x:Name="PART_SmallTweet" Visibility="Collapsed" />
-            <Border x:Name="_cover" Opacity="0" IsHitTestVisible="False" Background="{DynamicResource ThemeBrush}"/>
+            <Border x:Name="_cover" Opacity="0" IsHitTestVisible="False" Background="{DynamicResource NewsThemeBrush}"/>
           </Grid>
         </ControlTemplate>
       </Setter.Value>
@@ -301,7 +311,7 @@
 
   <Style x:Key="FlippingScatterViewItemStyle" TargetType="{x:Type s:ScatterViewItem}">
     <Setter Property="Background" Value="{x:Null}"/>
-    <Setter Property="BorderBrush" Value="{DynamicResource ThemeBrush}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource NewsThemeBrush}"/>
     <Setter Property="Foreground" Value="#FF515151"/>
     <Setter Property="BorderThickness" Value="3"/>
     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -564,7 +574,7 @@
                   <RotateTransform Angle="180" />
                 </Grid.RenderTransform>
                 <Microsoft_Surface_Presentation_Generic:SurfaceShadowChrome x:Name="shadowBack" Color="#33000000" ShadowVector="{TemplateBinding ShadowVector}" Opacity="0"/>
-                <Border x:Name="activeBorderBack" BorderBrush="{DynamicResource ThemeBrush}" BorderThickness="3" Margin="-5" Opacity="0" />
+                <Border x:Name="activeBorderBack" BorderBrush="{DynamicResource NewsThemeBrush}" BorderThickness="3" Margin="-5" Opacity="0" />
                 <Border x:Name="contentBorderBack" RenderTransformOrigin=".5,.5" Margin="1">
                   <Border.RenderTransform>
                     <RotateTransform Angle="180" />
@@ -588,7 +598,7 @@
             </controls:Plane.BackContent>
             <Grid x:Name="container" RenderTransformOrigin="{TemplateBinding RenderTransformOrigin}">
               <Microsoft_Surface_Presentation_Generic:SurfaceShadowChrome x:Name="shadow" Color="#33000000" ShadowVector="{TemplateBinding ShadowVector}" Opacity="0"/>
-              <Border x:Name="activeBorder" BorderBrush="{DynamicResource ThemeBrush}" BorderThickness="3" Margin="-5" Opacity="0" />
+              <Border x:Name="activeBorder" BorderBrush="{DynamicResource NewsThemeBrush}" BorderThickness="3" Margin="-5" Opacity="0" />
               <Border x:Name="contentBorder" Margin="1">
                 <controls:RemovedContentItem Backside="{Binding BackContent, RelativeSource={RelativeSource AncestorType={x:Type controls:Plane}, Mode=FindAncestor}}" Style="{DynamicResource RemovedContentItemStyle}"/>
               </Border>
@@ -666,7 +676,7 @@
           <Border Padding="2">
             <Border Opacity=".3">
               <Border.Background>
-                <SolidColorBrush Color="{DynamicResource ThemeColor}" />
+                <SolidColorBrush Color="{DynamicResource NewsThemeColor}" />
               </Border.Background>
             </Border>
           </Border>
@@ -911,7 +921,7 @@
       </Setter.Value>
     </Setter>
     <Setter Property="BorderThickness" Value="0"/>
-    <Setter Property="Foreground" Value="{DynamicResource ThemeBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource NewsThemeBrush}"/>
     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
     <Setter Property="VerticalContentAlignment" Value="Stretch"/>
     <Setter Property="Padding" Value="0"/>
@@ -969,8 +979,8 @@
       </Setter.Value>
     </Setter>
     <Setter Property="BorderThickness" Value="0"/>
-    <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
-    <Setter Property="Background" Value="{DynamicResource ThemeBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource NewsForegroundBrush}"/>
+    <Setter Property="Background" Value="{DynamicResource NewsThemeBrush}"/>
     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
     <Setter Property="VerticalContentAlignment" Value="Stretch"/>
     <Setter Property="Padding" Value="0"/>
@@ -1015,7 +1025,7 @@
   </Style>
 
   <Style x:Key="CloseTimerStyle" TargetType="{x:Type controls:CloseTimer}">
-    <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource NewsForegroundBrush}"/>
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type controls:CloseTimer}">
@@ -1051,9 +1061,9 @@
             </Storyboard>
           </ControlTemplate.Resources>
           <Grid x:Name="Grid" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Width="40" Height="40">
-            <Border x:Name="border" Background="{DynamicResource ThemeBrush}"	Opacity=".5" />
-            <Ellipse Width="20" Height="20" Stroke="{DynamicResource ForegroundBrush}" StrokeThickness="1" />
-            <Path Width="8.5" Height="8.5" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 11.4013,10.1147L 4.552,3.26538L 9.33203,3.26538L 9.33203,0.598714L 2.66667,0.598714L 2.66667,0.596028L 0,0.598714L 0,9.93205L 2.66536,9.93205L 2.66667,5.15072L 9.51603,12L 11.4013,10.1147 Z "/>
+            <Border x:Name="border" Background="{DynamicResource TagBackThemeBrush}"	Opacity=".5" />
+            <Ellipse Width="20" Height="20" Stroke="{DynamicResource TagBackForegroundBrush}" StrokeThickness="1" />
+            <Path Width="8.5" Height="8.5" Stretch="Fill" Fill="{DynamicResource TagBackForegroundBrush}" Data="F1 M 11.4013,10.1147L 4.552,3.26538L 9.33203,3.26538L 9.33203,0.598714L 2.66667,0.598714L 2.66667,0.596028L 0,0.598714L 0,9.93205L 2.66536,9.93205L 2.66667,5.15072L 9.51603,12L 11.4013,10.1147 Z "/>
           </Grid>
           <ControlTemplate.Triggers>
             <Trigger Property="IsPressed" Value="True">
@@ -1087,9 +1097,9 @@
             </Storyboard>
           </ControlTemplate.Resources>
           <Grid x:Name="Grid" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Width="40" Height="40">
-            <Border x:Name="border" Background="{DynamicResource ForegroundBrush}"	Opacity=".2" />
-            <Ellipse Width="20" Height="20" Stroke="{DynamicResource ForegroundBrush}" StrokeThickness="1" />
-            <Path Width="8.5" Height="8.5" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 11.4013,10.1147L 4.552,3.26538L 9.33203,3.26538L 9.33203,0.598714L 2.66667,0.598714L 2.66667,0.596028L 0,0.598714L 0,9.93205L 2.66536,9.93205L 2.66667,5.15072L 9.51603,12L 11.4013,10.1147 Z " RenderTransformOrigin=".5,.5">
+            <Border x:Name="border" Background="{DynamicResource NewsForegroundBrush}"	Opacity=".2" />
+            <Ellipse Width="20" Height="20" Stroke="{TemplateBinding Foreground}" StrokeThickness="1" />
+            <Path Width="8.5" Height="8.5" Stretch="Fill" Fill="{TemplateBinding Foreground}" Data="F1 M 11.4013,10.1147L 4.552,3.26538L 9.33203,3.26538L 9.33203,0.598714L 2.66667,0.598714L 2.66667,0.596028L 0,0.598714L 0,9.93205L 2.66536,9.93205L 2.66667,5.15072L 9.51603,12L 11.4013,10.1147 Z " RenderTransformOrigin=".5,.5">
               <Path.RenderTransform>
                 <RotateTransform Angle="180" />
               </Path.RenderTransform>
@@ -1110,8 +1120,8 @@
     </Setter>
   </Style>
   <Style x:Key="ImageFlipButtonStyle" TargetType="{x:Type s:SurfaceButton}">
-    <Setter Property="Background" Value="{DynamicResource ForegroundBrush}" />
-    <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+    <Setter Property="Background" Value="{DynamicResource SocialThemeBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource SocialForegroundBrush}" />
     <Setter Property="SnapsToDevicePixels" Value="True"/>
     <Setter Property="Template">
       <Setter.Value>
@@ -1131,7 +1141,7 @@
           <Grid x:Name="Grid" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Width="40" Height="40">
             <Border x:Name="border" Background="{TemplateBinding Background}"	Opacity=".5" />
             <Ellipse Width="20" Height="20" Stroke="{TemplateBinding Foreground}" StrokeThickness="1" />
-            <Path Width="8.5" Height="8.5" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 11.4013,10.1147L 4.552,3.26538L 9.33203,3.26538L 9.33203,0.598714L 2.66667,0.598714L 2.66667,0.596028L 0,0.598714L 0,9.93205L 2.66536,9.93205L 2.66667,5.15072L 9.51603,12L 11.4013,10.1147 Z " RenderTransformOrigin=".5,.5">
+            <Path Width="8.5" Height="8.5" Stretch="Fill" Fill="{TemplateBinding Foreground}" Data="F1 M 11.4013,10.1147L 4.552,3.26538L 9.33203,3.26538L 9.33203,0.598714L 2.66667,0.598714L 2.66667,0.596028L 0,0.598714L 0,9.93205L 2.66536,9.93205L 2.66667,5.15072L 9.51603,12L 11.4013,10.1147 Z " RenderTransformOrigin=".5,.5">
               <Path.RenderTransform>
                 <RotateTransform Angle="180" />
               </Path.RenderTransform>
@@ -1153,7 +1163,7 @@
   </Style>
 
   <Style x:Key="ImageLoaderStyle" TargetType="{x:Type controls:ImageLoader}">
-    <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource NewsForegroundBrush}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type controls:ImageLoader}">

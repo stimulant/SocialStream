@@ -10,15 +10,20 @@ namespace FeedProcessor.Enums
         /// The item came from Flickr.
         /// </summary>
         Flickr,
-        
+
         /// <summary>
         /// The item came from twitter.
         /// </summary>
         Twitter,
-        
+
         /// <summary>
         /// The item came from a news feed.
         /// </summary>
-        News
+        News,
+
+        /// <summary>
+        /// The item came from Facebook.
+        /// </summary>
+        Facebook
     }
 }

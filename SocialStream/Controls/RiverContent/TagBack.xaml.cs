@@ -46,10 +46,10 @@ namespace SocialStream.Controls.RiverContent
         {
             InitializeComponent();
 
-            // The use of Plane causes problems in resolving resources in the content that appears on the back, so we have
-            // to do this and include Resources.xaml in the the TagBack control.
-            Resources["ThemeColor"] = Settings.Default.ThemeColor;
-            Resources["ForegroundColor"] = Settings.Default.ForegroundColor;
+            FeedItem feedItem = DataContext as FeedItem;
+
+            Resources["TagBackThemeColor"] = Settings.Default.NewsThemeColor;
+            Resources["TagBackForegroundColor"] = Settings.Default.NewsForegroundColor;
 
             DataContextChanged += new DependencyPropertyChangedEventHandler(TagBack_DataContextChanged);
         }
@@ -68,6 +68,24 @@ namespace SocialStream.Controls.RiverContent
                 return;
             }
 
+            // Set theme and background color based on source type (News v/s Social)
+            if (feedItem != null)
+            {
+                if (feedItem.SourceType == SourceType.News)
+                {
+                    // The use of Plane causes problems in resolving resources in the content that appears on the back, so we have
+                    // to do this and include Resources.xaml in the the TagBack control.
+                    Resources["TagBackThemeColor"] = Settings.Default.NewsThemeColor;
+                    Resources["TagBackForegroundColor"] = Settings.Default.NewsForegroundColor;
+                }
+
+                else
+                {
+                    Resources["TagBackThemeColor"] = Settings.Default.SocialThemeColor;
+                    Resources["TagBackForegroundColor"] = Settings.Default.SocialForegroundColor;
+                }
+            }
+
             string labelState = NoLabel.Name;
             string contentTypeState = NotStatus.Name;
             if (feedItem != null)
@@ -82,7 +100,14 @@ namespace SocialStream.Controls.RiverContent
                 }
                 else if (feedItem.ContentType == ContentType.Status)
                 {
-                    labelState = StatusLabel.Name;
+                    if (feedItem.SourceType == SourceType.Facebook)
+                    {
+                        labelState = FacebookStatusLabel.Name;
+                    }
+                    else if (feedItem.SourceType == SourceType.Twitter)
+                    {
+                        labelState = TwitterStatusLabel.Name;
+                    }
                     contentTypeState = IsStatus.Name;
                 }
             }

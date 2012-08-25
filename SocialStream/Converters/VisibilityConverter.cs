@@ -25,7 +25,7 @@ namespace SocialStream.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             bool converted =
-                (value is string && !string.IsNullOrEmpty((string)value)) ||
+                (value is string && !string.IsNullOrWhiteSpace((string)value)) ||
                 (value is int && (int)value > 0) ||
                 (value is double && (double)value > 0) ||
                 (value is bool && (bool)value == true) ||

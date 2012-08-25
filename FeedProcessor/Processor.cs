@@ -37,12 +37,32 @@ namespace FeedProcessor
         /// </summary>
         public const string AuthorQueryMarker = "@";
 
+        /// <summary>
+        /// The first character of query terms representing a group.
+        /// </summary>
+        public const string GroupQueryMarker = "+";
+
         #region Private Members
 
         /// <summary>
         /// The API key to use for Flickr.
         /// </summary>
         private string _flickrApiKey;
+
+        /// <summary>
+        /// The Client Id to use for Facebook.
+        /// </summary>
+        private string _facebookClientId;
+
+        /// <summary>
+        /// The Client Secret to use for Facebook.
+        /// </summary>
+        private string _facebookClientSecret;
+
+        /// <summary>
+        /// Determine whether to query others' posts for a Facebook Page.
+        /// </summary>
+        private bool _displayFbContentFromOthers;
 
         /// <summary>
         /// Whether or not the processor is running.
@@ -78,6 +98,11 @@ namespace FeedProcessor
         /// The requested interval between queries to the news service.
         /// </summary>
         private TimeSpan _newsPollInterval;
+
+        /// <summary>
+        /// The requested interval between queries to the facebook service.
+        /// </summary>
+        private TimeSpan _facebookPollInterval;
 
         /// <summary>
         /// The oldest allowable date for a feed item.
@@ -121,16 +146,21 @@ namespace FeedProcessor
         /// <param name="newsPollInterval">The requested interval between queries to the news service.</param>
         /// <param name="minDate">The oldest allowable date for a feed item.</param>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "Intentionally catching all exceptions.")]
-        public Processor(string flickrApiKey, TimeSpan flickrPollInterval, TimeSpan twitterPollInterval, TimeSpan newsPollInterval, DateTime minDate)
+        public Processor(string flickrApiKey, string facebookClientId, string facebookClientSecret, bool displayFbContentFromOthers, TimeSpan flickrPollInterval, TimeSpan twitterPollInterval, TimeSpan newsPollInterval, TimeSpan facebookPollInterval, DateTime minDate)
         {
             _flickrApiKey = flickrApiKey;
+            _facebookClientId = facebookClientId;
+            _facebookClientSecret = facebookClientSecret;
+            _displayFbContentFromOthers = displayFbContentFromOthers;
             _flickrPollInterval = flickrPollInterval;
             _twitterPollInterval = twitterPollInterval;
             _newsPollInterval = newsPollInterval;
+            _facebookPollInterval = facebookPollInterval;
             _minDate = minDate;
             TwitterQuery = new ObservableCollection<string>();
             FlickrQuery = new ObservableCollection<string>();
             NewsQuery = new ObservableCollection<string>();
+            FacebookQuery = new ObservableCollection<string>();
 
             ServicePointManager.DefaultConnectionLimit = 200;
         }
@@ -476,6 +506,7 @@ namespace FeedProcessor
         /// Gets or sets the list of query terms for Flickr. A query term can be:
         /// @username – Include items from this user
         /// !@username – Exclude items from this user
+        /// +groupname - Include items from this group pool
         /// keyword – Include this keyword in the search
         /// !keyword – Exclude items containing this word
         /// !http://url/ – Exclude specific items by URL
@@ -541,7 +572,8 @@ namespace FeedProcessor
             List<string> terms =
                 (from q in FlickrQuery
                  where !q.StartsWith(AuthorQueryMarker, StringComparison.OrdinalIgnoreCase) &&
-                   !q.StartsWith(NegativeQueryMarker, StringComparison.OrdinalIgnoreCase)
+                   !q.StartsWith(NegativeQueryMarker, StringComparison.OrdinalIgnoreCase) &&
+                   !q.StartsWith(GroupQueryMarker, StringComparison.OrdinalIgnoreCase)
                  select q).ToList();
 
             List<string> queries = new List<string>();
@@ -567,12 +599,12 @@ namespace FeedProcessor
             // Build queries for user searches.
             List<string> users = (from q in FlickrQuery where q.StartsWith(AuthorQueryMarker, StringComparison.OrdinalIgnoreCase) select q.Substring(1)).ToList();
 
-            TimeSpan pollInterval = TimeSpan.FromMilliseconds(_flickrPollInterval.TotalMilliseconds * (queries.Count + users.Count));
+            TimeSpan userPollInterval = TimeSpan.FromMilliseconds(_flickrPollInterval.TotalMilliseconds * (queries.Count + users.Count));
 
             // Build feeds for the search API.
             foreach (string query in queries)
             {
-                FlickrSearchFeed feed = new FlickrSearchFeed(_flickrApiKey, pollInterval, _minDate);
+                FlickrSearchFeed feed = new FlickrSearchFeed(_flickrApiKey, userPollInterval, _minDate);
                 feed.Query = query;
                 AddFeed(feed);
             }
@@ -587,16 +619,133 @@ namespace FeedProcessor
                         return;
                     }
 
-                    FlickrUserFeed feed = new FlickrUserFeed(_flickrApiKey, pollInterval, _minDate);
+                    FlickrUserFeed feed = new FlickrUserFeed(_flickrApiKey, userPollInterval, _minDate);
                     feed.Query = userId;
                     AddFeed(feed);
                 });
 
                 FlickrSearchFeed.GetFlickrUserIdFromUserName(user, _flickrApiKey, callback);
             }
+
+            // Build queries for group searches.
+            List<string> groups = (from q in FlickrQuery where q.StartsWith(GroupQueryMarker, StringComparison.OrdinalIgnoreCase) select q.Substring(1)).ToList();
+
+            TimeSpan groupPollInterval = TimeSpan.FromMilliseconds(_flickrPollInterval.TotalMilliseconds * (queries.Count + groups.Count));
+
+            // Build feeds for the search API.
+            foreach (string query in queries)
+            {
+                FlickrSearchFeed feed = new FlickrSearchFeed(_flickrApiKey, groupPollInterval, _minDate);
+                feed.Query = query;
+                AddFeed(feed);
+            }
+
+            // Build feeds for group searches.
+            foreach (string group in groups)
+            {
+                FlickrSearchFeed.GetFlickrGroupIdFromGroupNameCallback callback = new FlickrSearchFeed.GetFlickrGroupIdFromGroupNameCallback((groupId) =>
+                {
+                    if (string.IsNullOrEmpty(groupId))
+                    {
+                        return;
+                    }
+
+                    FlickrGroupFeed feed = new FlickrGroupFeed(_flickrApiKey, groupPollInterval, _minDate);
+                    feed.Query = groupId;
+                    AddFeed(feed);
+                });
+
+                FlickrSearchFeed.GetFlickrGroupIdFromGroupName(group, _flickrApiKey, callback);
+            }
         }
 
         #endregion
+
+        #region FacebookQuery
+
+        /// <summary>
+        /// Backing store for FacebookQuery.
+        /// </summary>
+        private ObservableCollection<string> _facebookQuery;
+
+        /// <summary>
+        /// TODO: Update Summary
+        /// </summary>
+        /// <value>The list of query terms for Facebook.</value>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly", Justification = "No."), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Portability", "CA1903:UseOnlyApiFromTargetedFramework", MessageId = "System.Collections.ObjectModel.ObservableCollection`1<System.String>.#.ctor(System.Collections.Generic.IEnumerable`1<System.String>)", Justification = "Not worried about old framework versions.")]
+        public ObservableCollection<string> FacebookQuery
+        {
+            get
+            {
+                return _facebookQuery;
+            }
+
+            set
+            {
+                if (_facebookQuery != null)
+                {
+                    _facebookQuery.CollectionChanged -= FacebookQuery_CollectionChanged;
+                }
+
+                if (value != null)
+                {
+                    _facebookQuery = new ObservableCollection<string>((from q in value select q.Trim()).Distinct());
+
+                    if (_facebookQuery != null)
+                    {
+                        _facebookQuery.CollectionChanged += FacebookQuery_CollectionChanged;
+                    }
+                }
+
+                UpdateFacebookQuery();
+            }
+        }
+
+        /// <summary>
+        /// Update feed items when the Facebook query changes.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.Collections.Specialized.NotifyCollectionChangedEventArgs"/> instance containing the event data.</param>
+        private void FacebookQuery_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            UpdateFilters(FacebookQuery, SourceType.Facebook, e.NewItems, e.OldItems);
+        }
+
+        /// <summary>
+        /// When the Facebook query changes, create new Twitter feeds to poll for it.
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Feeds are disposed in RemoveFeed().")]
+        private void UpdateFacebookQuery()
+        {
+            List<FacebookPageFeed> feeds = (from f in _feeds where f.SourceType == SourceType.Facebook select f).Cast<FacebookPageFeed>().ToList();
+            foreach (FacebookPageFeed oldFeed in feeds)
+            {
+                RemoveFeed(oldFeed);
+            }
+
+            if (FacebookQuery == null || FacebookQuery.Count == 0)
+            {
+                return;
+            }
+
+            // Build queries for page searches.
+            List<string> pages = (from q in FacebookQuery where q.StartsWith(AuthorQueryMarker, StringComparison.OrdinalIgnoreCase) select q.Substring(1)).ToList();
+
+            // Increase the poll interval so that the total number of requests don't exceed the requested poll interval.
+            TimeSpan pollInterval = TimeSpan.FromMilliseconds(_facebookPollInterval.TotalMilliseconds * (pages.Count));
+
+            // Build feeds for user searches.
+            foreach (string page in pages)
+            {
+                FacebookPageFeed feed = new FacebookPageFeed(_displayFbContentFromOthers, _facebookClientId, _facebookClientSecret, pollInterval, _minDate);
+                feed.Query = HttpUtility.UrlEncode(page);
+                Console.WriteLine(feed.Query);
+                AddFeed(feed);
+            }
+        }
+
+        #endregion
+
 
         #region NewsQuery
 
@@ -842,6 +991,10 @@ namespace FeedProcessor
             {
                 UpdateTwitterQuery();
             }
+            else if (sourceType == SourceType.Facebook)
+            {
+                UpdateFacebookQuery();
+            }
         }
 
         /// <summary>
@@ -1042,6 +1195,11 @@ namespace FeedProcessor
                 if (e.FeedItem.BlockReason == BlockReason.None && e.FeedItem.SourceType == SourceType.News)
                 {
                     FilterOnQuery(e.FeedItem, NewsQuery);
+                }
+
+                if (e.FeedItem.BlockReason == BlockReason.None && e.FeedItem.SourceType == SourceType.Facebook)
+                {
+                    FilterOnQuery(e.FeedItem, FacebookQuery);
                 }
 
                 if (e.FeedItem.BlockReason == BlockReason.None)
@@ -1364,6 +1522,14 @@ namespace FeedProcessor
                     LastTwitterUpdate = DateTime.Now;
                 }
             }
+            else if (sender.SourceType == SourceType.Facebook)
+            {
+                IsFacebookUp = e.IsSourceUp;
+                if (IsFacebookUp)
+                {
+                    LastFacebookUpdate = DateTime.Now;
+                }
+            }
 
             if (FeedUpdated != null)
             {
@@ -1467,6 +1633,35 @@ namespace FeedProcessor
 
         #endregion
 
+        #region IsFacebookUp
+
+        /// <summary>
+        /// Backing store for IsFacebookUp.
+        /// </summary>
+        private bool _isFacebookUp;
+
+        /// <summary>
+        /// Gets a value indicating whether Facebook is available.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if Facebook is available; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsFacebookUp
+        {
+            get
+            {
+                return _isFacebookUp;
+            }
+
+            private set
+            {
+                _isFacebookUp = value;
+                NotifyPropertyChanged("IsFacebookUp");
+            }
+        }
+
+        #endregion
+
         #region LastFlickrUpdate
 
         /// <summary>
@@ -1516,6 +1711,33 @@ namespace FeedProcessor
             {
                 _lastTwitterUpdate = value;
                 NotifyPropertyChanged("LastTwitterUpdate");
+            }
+        }
+
+        #endregion
+
+        #region LastFacebookUpdate
+
+        /// <summary>
+        /// Backing store for LastFacebookUpdate.
+        /// </summary>
+        private DateTime _lastFacebookUpdate;
+
+        /// <summary>
+        /// Gets the time of the last response from facebook.
+        /// </summary>
+        /// <value>The time of the last response from facebook.</value>
+        public DateTime LastFacebookUpdate
+        {
+            get
+            {
+                return _lastFacebookUpdate;
+            }
+
+            private set
+            {
+                _lastFacebookUpdate = value;
+                NotifyPropertyChanged("LastFacebookUpdate");
             }
         }
 

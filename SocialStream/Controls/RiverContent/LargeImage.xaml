@@ -1,4 +1,4 @@
-<UserControl
+﻿<UserControl
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:s="http://schemas.microsoft.com/surface/2008"
@@ -35,7 +35,7 @@
         </VisualState>
       </VisualStateGroup>
     </VisualStateManager.VisualStateGroups>
-    <Border Background="{DynamicResource ForegroundBrush}" />
+    <Border Background="{DynamicResource SocialForegroundBrush}" />
     <Grid Margin="5">
       <Grid.Clip>
         <RectangleGeometry RadiusX="35" RadiusY="35" Rect="0,0,1500,1500" />
@@ -51,21 +51,21 @@
       </Grid.ColumnDefinitions>
 
       <controls:ManipulationViewport x:Name="_viewport" x:FieldModifier="private" Grid.RowSpan="3" Grid.ColumnSpan="2" Style="{DynamicResource ManipulationViewportStyle}" MaximumScaleFactor="2" helpers:TouchChangedEvents.AreAnyTouchesCapturedWithinChanged="Viewport_AreAnyTouchesCapturedWithinChanged">
-        <controls:ImageLoader Style="{DynamicResource ImageLoaderStyle}" Foreground="{DynamicResource ThemeBrush}" x:Name="_image" x:FieldModifier="private" Label="{x:Static props:Resources.Image}" />
+        <controls:ImageLoader Style="{DynamicResource ImageLoaderStyle}" Foreground="{DynamicResource SocialThemeBrush}" x:Name="_image" x:FieldModifier="private" Label="{x:Static props:Resources.Image}" />
       </controls:ManipulationViewport>
 
       <Border Background="#B2000000" Padding="25,5,5,5" BorderThickness="0,0,2,0">
         <StackPanel VerticalAlignment="Center">
-          <TextBlock Text="{Binding Title}" FontSize="14" Foreground="{DynamicResource ForegroundBrush}" TextTrimming="CharacterEllipsis" />
+          <TextBlock Text="{Binding Title}" FontSize="14" Foreground="{DynamicResource SocialForegroundBrush}" TextTrimming="CharacterEllipsis" />
           <StackPanel Orientation="Horizontal" Opacity=".5">
-            <TextBlock FontSize="9" Foreground="{DynamicResource ForegroundBrush}" Text="{x:Static props:Resources.Posted}" />
-            <TextBlock TextTrimming="WordEllipsis" FontSize="9" Foreground="{DynamicResource ForegroundBrush}">
+            <TextBlock FontSize="9" Foreground="{DynamicResource SocialForegroundBrush}" Text="{x:Static props:Resources.Posted}" />
+            <TextBlock TextTrimming="WordEllipsis" FontSize="9" Foreground="{DynamicResource SocialForegroundBrush}">
             <TextBlock.Text>
               <Binding Path="Date" StringFormat="{x:Static props:Resources.DateFormat}" />
             </TextBlock.Text>
             </TextBlock>
-            <TextBlock FontSize="9" Foreground="{DynamicResource ForegroundBrush}" Text="{x:Static props:Resources.By}" />
-            <TextBlock TextTrimming="CharacterEllipsis" FontSize="9" Foreground="{DynamicResource ForegroundBrush}" Text="{Binding Path=Author}" />
+            <TextBlock FontSize="9" Foreground="{DynamicResource SocialForegroundBrush}" Text="{x:Static props:Resources.By}" />
+            <TextBlock TextTrimming="CharacterEllipsis" FontSize="9" Foreground="{DynamicResource SocialForegroundBrush}" Text="{Binding Path=Author}" />
           </StackPanel>
         </StackPanel>
       </Border>
@@ -74,12 +74,12 @@
         <TextBlock Text="{Binding Caption}" FontSize="10" TextWrapping="Wrap" TextTrimming="WordEllipsis" />
       </Border>
 
-      <Border x:Name="_manipulatingBorder" x:FieldModifier="private" BorderBrush="{DynamicResource ThemeBrush}" BorderThickness="3" CornerRadius="34,0,0,0" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="3" Opacity="0" IsHitTestVisible="False" />
+      <Border x:Name="_manipulatingBorder" x:FieldModifier="private" BorderBrush="{DynamicResource SocialThemeBrush}" BorderThickness="3" CornerRadius="34,0,0,0" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="3" Opacity="0" IsHitTestVisible="False" />
 
       <Border BorderBrush="#00FF0000" BorderThickness="25" Grid.Row="1" Grid.ColumnSpan="2" />
 
-      <s:SurfaceButton x:Name="_closeBtn" x:FieldModifier="private" Grid.Column="1" Style="{DynamicResource ImageCloseButtonStyle}" Foreground="{DynamicResource ForegroundBrush}" Background="{DynamicResource ThemeBrush}" Click="Close_Click" />
-      <s:SurfaceButton x:Name="_flipBtn" x:FieldModifier="private" Grid.Column="1" Grid.Row="2" Padding="0" Style="{DynamicResource ImageFlipButtonStyle}" Background="{DynamicResource ThemeBrush}" Click="Flip_Click" />
+      <s:SurfaceButton x:Name="_closeBtn" x:FieldModifier="private" Grid.Column="1" Style="{DynamicResource ImageCloseButtonStyle}" Foreground="{DynamicResource SocialForegroundBrush}" Background="{DynamicResource SocialThemeBrush}" Click="Close_Click" />
+      <s:SurfaceButton x:Name="_flipBtn" x:FieldModifier="private" Grid.Column="1" Grid.Row="2" Padding="0" Style="{DynamicResource ImageFlipButtonStyle}" Foreground="{DynamicResource SocialForegroundBrush}" Background="{DynamicResource SocialThemeBrush}" Click="Flip_Click" />
     </Grid>
   </Grid>
 </UserControl>

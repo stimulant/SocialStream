@@ -59,7 +59,7 @@ namespace FeedProcessor
         /// Processes the response from the feed service.
         /// </summary>
         /// <param name="response">response from the feed service.</param>
-        internal abstract void ProcessResponse(string response);
+        internal abstract void ProcessResponse(object responseObject);
 
         /// <summary>
         /// Initiates a request to the feed service.

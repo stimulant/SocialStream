@@ -144,6 +144,9 @@
   <data name="Example" xml:space="preserve">
     <value>ex: </value>
   </data>
+  <data name="Facebook" xml:space="preserve">
+    <value>facebook</value>
+  </data>
   <data name="Flickr" xml:space="preserve">
     <value>flickr</value>
   </data>

@@ -105,8 +105,10 @@ namespace FeedProcessor.Feeds
         /// Processes the response from the feed service.
         /// </summary>
         /// <param name="response">response from the feed service.</param>
-        internal override void ProcessResponse(string response)
+        internal override void ProcessResponse(object responseObject)
         {
+            string response = responseObject.ToString();
+
             using (StringReader stringReader = new StringReader(response))
             {
                 SyndicationFeed feed = SyndicationFeed.Load(XmlReader.Create(stringReader));

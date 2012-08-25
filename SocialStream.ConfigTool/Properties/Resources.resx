@@ -202,16 +202,16 @@
     <value>API polling interval</value>
   </data>
   <data name="FlickrQueriesGroupDescription" xml:space="preserve">
-    <value>Terms to search for on Flickr. Use "@username" to include images from a specific account, or "term" to do a general search for that term.</value>
+    <value>Terms to search for on Flickr. Use "@username" to include images from a specific account, "+groupname" to include images from the pool of a specific group, or "term" to do a general search for that term.</value>
   </data>
   <data name="FlickrQueriesGroupTitle" xml:space="preserve">
     <value>Flickr queries</value>
   </data>
-  <data name="ForegroundColorGroupDescription" xml:space="preserve">
-    <value>Sets the color of the text and accents for stream items</value>
+  <data name="NewsForegroundColorGroupDescription" xml:space="preserve">
+    <value>Sets the color of the text and accents for news items</value>
   </data>
-  <data name="ForegroundColorGroupTitle" xml:space="preserve">
-    <value>Foreground color</value>
+  <data name="NewsForegroundColorGroupTitle" xml:space="preserve">
+    <value>News Foreground Color</value>
   </data>
   <data name="General" xml:space="preserve">
     <value>General</value>
@@ -333,11 +333,11 @@
   <data name="TagValueHeader" xml:space="preserve">
     <value>Tag value</value>
   </data>
-  <data name="ThemeColorGroupDescription" xml:space="preserve">
-    <value>Sets the background color for stream items</value>
+  <data name="NewsThemeColorGroupDescription" xml:space="preserve">
+    <value>Sets the background color for news items</value>
   </data>
-  <data name="ThemeColorGroupTitle" xml:space="preserve">
-    <value>Background Color</value>
+  <data name="NewsThemeColorGroupTitle" xml:space="preserve">
+    <value>News Background Color</value>
   </data>
   <data name="TimeSpanError" xml:space="preserve">
     <value>Enter a valid time in the format HH:MM:SS</value>
@@ -461,5 +461,53 @@
   </data>
   <data name="DefaultsConfirmation" xml:space="preserve">
     <value>Are you sure you want to overwrite your changes with the default settings?</value>
+  </data>
+  <data name="Facebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="FacebookEditorDescription" xml:space="preserve">
+    <value>Configure Facebook Settings</value>
+  </data>
+  <data name="FacebookBansGroupDescription" xml:space="preserve">
+    <value>Items to block from the Facebook feeds. Use "@username" to exclude posts from a specific user.</value>
+  </data>
+  <data name="FacebookBansGroupTitle" xml:space="preserve">
+    <value>Facebook bans</value>
+  </data>
+  <data name="FacebookPollIntervalGroupDescription" xml:space="preserve">
+    <value>How often to query the Facebook for new posts specified in hours, minutes and seconds. (Example format: HH:MM:SS)</value>
+  </data>
+  <data name="FacebookPollIntervalGroupTitle" xml:space="preserve">
+    <value>API polling interval</value>
+  </data>
+  <data name="FacebookQueriesGroupDescription" xml:space="preserve">
+    <value>Pages to get posts from on Facebook. Use "@pagename" to include posts from a specific facebook page.</value>
+  </data>
+  <data name="FacebookQueriesGroupTitle" xml:space="preserve">
+    <value>Facebook queries</value>
+  </data>
+  <data name="SocialForegroundColorGroupDescription" xml:space="preserve">
+    <value>Sets the color of the text and accents for content from social networks</value>
+  </data>
+  <data name="SocialForegroundColorGroupTitle" xml:space="preserve">
+    <value>Social Foreground Color</value>
+  </data>
+  <data name="SocialThemeColorGroupDescription" xml:space="preserve">
+    <value>Sets the background color for content from social networks</value>
+  </data>
+  <data name="SocialThemeColorGroupTitle" xml:space="preserve">
+    <value>Social Background Color</value>
+  </data>
+  <data name="FacebookDisplayContentGroupDiscription" xml:space="preserve">
+    <value>Show or hide content from other users. If enabled, posts and images on the facebook page from other users are also pulled. If disabled, only content posted by the facebook page is pulled.</value>
+  </data>
+  <data name="FacebookDisplayContentGroupTitle" xml:space="preserve">
+    <value>Display content from other users</value>
+  </data>
+  <data name="NewItemBorderColorGroupDescription" xml:space="preserve">
+    <value>Sets the border color that flashes when a new item is added to the stream</value>
+  </data>
+  <data name="NewItemBorderColorGroupTitle" xml:space="preserve">
+    <value>New Item Alert Border Color</value>
   </data>
 </root>

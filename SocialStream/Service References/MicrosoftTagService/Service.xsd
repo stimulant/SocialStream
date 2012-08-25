@@ -173,6 +173,7 @@
       <xs:element name="UTCStartDate" type="xs:dateTime" />
       <xs:element minOccurs="0" name="UTCEndDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="AssociatedPayload" nillable="true" type="xs:string" />
+      <xs:element name="PublicTitle" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Tag" nillable="true" type="tns:Tag" />
@@ -504,6 +505,73 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="GetTagIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDirectUrl">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userCredential" nillable="true" type="tns:UserCredential" />
+        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tagName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDirectUrlResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDirectUrlResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQRUrl">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userCredential" nillable="true" type="tns:UserCredential" />
+        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tagName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQRUrlResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetQRUrlResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNfcUrl">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userCredential" nillable="true" type="tns:UserCredential" />
+        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tagName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNfcUrlResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetNfcUrlResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQRCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userCredential" nillable="true" type="tns:UserCredential" />
+        <xs:element minOccurs="0" name="categoryName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tagName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="imageType" type="tns:ImageTypes" />
+        <xs:element minOccurs="0" name="sizeInInches" type="xs:float" />
+        <xs:element minOccurs="0" name="helpText" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQRCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetQRCodeResult" nillable="true" type="xs:base64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

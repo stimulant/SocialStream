@@ -2,7 +2,7 @@
 
 <!-- Define some installer-wide variables. -->
 <?define UpgradeCode="BD6A935B-B751-44D0-9EE7-0E976F605DB6"?>
-<?define CurrentVersion="2.1.622.0"?>
+<?define CurrentVersion="2.0.624"?>
 
 <!-- Modify these lines to suit the needs of the current app. -->
 <?define WelcomeDialogTitle="{\WixUI_Font_Bigger}Welcome to the [ProductName] [ProductVersion] Setup Wizard"?>
@@ -95,6 +95,7 @@
             <File Id="SocialStream.exe.config.default" Name="SocialStream.exe.config.default" Source="../SocialStream/bin/Release/SocialStream.exe.config.default" />
             <File Id="Profanity.txt" Name="Profanity.txt" Source="../SocialStream/bin/Release/Profanity.txt" />
             <File Id="Profanity.txt.default" Name="Profanity.txt.default" Source="../SocialStream/bin/Release/Profanity.txt.default" />
+            <File Id="Facebook.dll" Name="Facebook.dll" Source="../SocialStream/bin/Release/Facebook.dll"/>
             <File Id="FeedProcessor.dll" Name="FeedProcessor.dll" Source="../SocialStream/bin/Release/FeedProcessor.dll"/>
             <File Id="Microsoft.Expression.Interactions.dll" Name="Microsoft.Expression.Interactions.dll" Source="../SocialStream/bin/Release/Microsoft.Expression.Interactions.dll"/>
             <File Id="System.Windows.Interactivity.dll" Name="System.Windows.Interactivity.dll" Source="../SocialStream/bin/Release/System.Windows.Interactivity.dll"/>

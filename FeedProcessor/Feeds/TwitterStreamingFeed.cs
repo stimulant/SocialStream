@@ -185,8 +185,9 @@ namespace FeedProcessor.Feeds
         /// Processes the response from the feed service.
         /// </summary>
         /// <param name="response">response from the feed service.</param>
-        internal override void ProcessResponse(string response)
+        internal override void ProcessResponse(object responseObject)
         {
+            string response = responseObject.ToString();
             byte[] byteArray = Encoding.UTF8.GetBytes(response);
             TwitterJsonStatus status = null;
             using (MemoryStream stream = new MemoryStream(byteArray))

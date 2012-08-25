@@ -51,9 +51,29 @@ namespace SocialStream.ConfigTool.Model
         private const string _ProfanityListFileName = "Profanity.txt";
 
         /// <summary>
-        /// The name of the theme color setting in the config file.
+        /// The name of the news theme color setting in the config file.
         /// </summary>
-        private const string _ThemeColorSetting = "ThemeColor";
+        private const string _NewsThemeColorSetting = "NewsThemeColor";
+
+        /// <summary>
+        /// The name of the news foreground color setting in the config file.
+        /// </summary>
+        private const string _NewsForegroundColorSetting = "NewsForegroundColor";
+
+        /// <summary>
+        /// The name of the message theme color setting in the config file.
+        /// </summary>
+        private const string _MessageThemeColorSetting = "SocialThemeColor";
+
+        /// <summary>
+        /// The name of the message foreground color setting in the config file.
+        /// </summary>
+        private const string _MessageForegroundColorSetting = "SocialForegroundColor";
+
+        /// <summary>
+        /// The name of the new item border color setting in the config file.
+        /// </summary>
+        private const string _NewItemBorderColorSetting = "NewItemBorderColor";
 
         /// <summary>
         /// The name of the Item Timeout Front setting in the config file.
@@ -86,6 +106,11 @@ namespace SocialStream.ConfigTool.Model
         private const string _NewsQuerySetting = "NewsQuery";
 
         /// <summary>
+        /// The name of the Facebook query setting in the config file.
+        /// </summary>
+        private const string _FacebookQuerySetting = "FacebookQuery";
+
+        /// <summary>
         /// The name of the Flickr API Key in the config file.
         /// </summary>
         private const string _FlickrApiKeySetting = "FlickrApiKey";
@@ -101,6 +126,11 @@ namespace SocialStream.ConfigTool.Model
         private const string _MinFeedItemDateSetting = "MinFeedItemDate";
 
         /// <summary>
+        /// The name of the Facebook poll interval setting in the config file.
+        /// </summary>
+        private const string _FacebookPollIntervalSetting = "FacebookPollInterval";
+
+        /// <summary>
         /// The name of the Twitter poll interval setting in the config file.
         /// </summary>
         private const string _TwitterPollIntervalSetting = "TwitterPollInterval";
@@ -109,11 +139,6 @@ namespace SocialStream.ConfigTool.Model
         /// The name of the News poll interval setting in the config file.
         /// </summary>
         private const string _NewsPollIntervalSetting = "NewsPollInterval";
-
-        /// <summary>
-        /// The name of the foreground color setting in the config file.
-        /// </summary>
-        private const string _ForegroundColorSetting = "ForegroundColor";
 
         /// <summary>
         /// The name of the min news size setting in the config file.
@@ -219,6 +244,16 @@ namespace SocialStream.ConfigTool.Model
         /// The name of the News bans setting in the config file.
         /// </summary>
         private const string _NewsBansSetting = "NewsBans";
+
+        /// <summary>
+        /// The name of the Facebook bans setting in the config file.
+        /// </summary>
+        private const string _FacebookBansSetting = "FacebookBans";
+
+        /// <summary>
+        /// The name of the display fb content from others setting in the config file.
+        /// </summary>
+        private const string _DisplayFbContentFromOthersSetting = "DisplayFbContentFromOthers";
 
         /// <summary>
         /// The location of the horizontal background image.
@@ -376,6 +411,11 @@ namespace SocialStream.ConfigTool.Model
                 NotifyPropertyChanged("NewsPollInterval");
             }
 
+            if (TimeSpan.TryParse(GetSetting(_FacebookPollIntervalSetting, defaults), out _FacebookPollInterval))
+            {
+                NotifyPropertyChanged("FacebookPollInterval");
+            }
+
             if (TimeSpan.TryParse(GetSetting(_NewItemAlertSetting, defaults), out _NewItemAlert))
             {
                 NotifyPropertyChanged("NewItemAlert");
@@ -399,6 +439,11 @@ namespace SocialStream.ConfigTool.Model
             if (bool.TryParse(GetSetting(_EnableContentResizingSetting, defaults), out _EnableContentResizing))
             {
                 NotifyPropertyChanged("EnableContentResizing");
+            }
+
+            if (bool.TryParse(GetSetting(_DisplayFbContentFromOthersSetting, defaults), out _DisplayFbContentFromOthers))
+            {
+                NotifyPropertyChanged("DisplayFbContentFromOthers");
             }
 
             if (long.TryParse(GetSetting(_AdminByteTagSeriesSetting, defaults), out _AdminByteTagSeries))
@@ -535,6 +580,17 @@ namespace SocialStream.ConfigTool.Model
                 }
             }
 
+            queryStr = GetSetting(_FacebookQuerySetting, defaults);
+            FacebookQueries.Clear();
+            if (!string.IsNullOrEmpty(queryStr))
+            {
+                string[] queries = queryStr.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string q in queries)
+                {
+                    FacebookQueries.Add(new BindableStringVO() { StringValue = q });
+                }
+            }
+
             queryStr = GetSetting(_FlickrBansSetting, defaults);
             FlickrBans.Clear();
             if (!string.IsNullOrEmpty(queryStr))
@@ -567,6 +623,17 @@ namespace SocialStream.ConfigTool.Model
                     NewsBans.Add(new BindableStringVO() { StringValue = q });
                 }
             }
+
+            queryStr = GetSetting(_FacebookBansSetting, defaults);
+            FacebookBans.Clear();
+            if (!string.IsNullOrEmpty(queryStr))
+            {
+                string[] queries = queryStr.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string q in queries)
+                {
+                    FacebookBans.Add(new BindableStringVO() { StringValue = q });
+                }
+            }
         }
 
         /// <summary>
@@ -578,8 +645,17 @@ namespace SocialStream.ConfigTool.Model
         {
             try
             {
-                System.Drawing.Color tempColor = System.Drawing.ColorTranslator.FromHtml(GetSetting(_ThemeColorSetting, defaults));
-                ThemeColor = Color.FromRgb(tempColor.R, tempColor.G, tempColor.B);
+                System.Drawing.Color tempColor = System.Drawing.ColorTranslator.FromHtml(GetSetting(_NewsThemeColorSetting, defaults));
+                NewsThemeColor = Color.FromRgb(tempColor.R, tempColor.G, tempColor.B);
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                System.Drawing.Color tempColor = System.Drawing.ColorTranslator.FromHtml(GetSetting(_MessageThemeColorSetting, defaults));
+                SocialThemeColor = Color.FromRgb(tempColor.R, tempColor.G, tempColor.B);
             }
             catch
             {
@@ -596,8 +672,26 @@ namespace SocialStream.ConfigTool.Model
 
             try
             {
-                System.Drawing.Color tempColor = System.Drawing.ColorTranslator.FromHtml(GetSetting(_ForegroundColorSetting, defaults));
-                ForegroundColor = Color.FromRgb(tempColor.R, tempColor.G, tempColor.B);
+                System.Drawing.Color tempColor = System.Drawing.ColorTranslator.FromHtml(GetSetting(_NewsForegroundColorSetting, defaults));
+                NewsForegroundColor = Color.FromRgb(tempColor.R, tempColor.G, tempColor.B);
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                System.Drawing.Color tempColor = System.Drawing.ColorTranslator.FromHtml(GetSetting(_MessageForegroundColorSetting, defaults));
+                SocialForegroundColor = Color.FromRgb(tempColor.R, tempColor.G, tempColor.B);
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                System.Drawing.Color tempColor = System.Drawing.ColorTranslator.FromHtml(GetSetting(_NewItemBorderColorSetting, defaults));
+                NewItemBorderColor = Color.FromRgb(tempColor.R, tempColor.G, tempColor.B);
             }
             catch
             {
@@ -641,19 +735,24 @@ namespace SocialStream.ConfigTool.Model
         /// </summary>
         internal void Save()
         {
-            SetSetting(_ThemeColorSetting, string.Format(CultureInfo.InvariantCulture, "#{0:X2}{1:X2}{2:X2}", ThemeColor.R, ThemeColor.G, ThemeColor.B));
+            SetSetting(_NewsThemeColorSetting, string.Format(CultureInfo.InvariantCulture, "#{0:X2}{1:X2}{2:X2}", NewsThemeColor.R, NewsThemeColor.G, NewsThemeColor.B));
+            SetSetting(_MessageThemeColorSetting, string.Format(CultureInfo.InvariantCulture, "#{0:X2}{1:X2}{2:X2}", SocialThemeColor.R, SocialThemeColor.G, SocialThemeColor.B));
             SetSetting(_VisualizationColorSetting, string.Format(CultureInfo.InvariantCulture, "#{0:X2}{1:X2}{2:X2}", VisualizationColor.R, VisualizationColor.G, VisualizationColor.B));
-            SetSetting(_ForegroundColorSetting, string.Format(CultureInfo.InvariantCulture, "#{0:X2}{1:X2}{2:X2}", ForegroundColor.R, ForegroundColor.G, ForegroundColor.B));
+            SetSetting(_NewsForegroundColorSetting, string.Format(CultureInfo.InvariantCulture, "#{0:X2}{1:X2}{2:X2}", NewsForegroundColor.R, NewsForegroundColor.G, NewsForegroundColor.B));
+            SetSetting(_MessageForegroundColorSetting, string.Format(CultureInfo.InvariantCulture, "#{0:X2}{1:X2}{2:X2}", SocialForegroundColor.R, SocialForegroundColor.G, SocialForegroundColor.B));
+            SetSetting(_NewItemBorderColorSetting, string.Format(CultureInfo.InvariantCulture, "#{0:X2}{1:X2}{2:X2}", NewItemBorderColor.R, NewItemBorderColor.G, NewItemBorderColor.B));
 
             SetSetting(_IsProfanityFilterEnabledSetting, IsProfanityFilterEnabled.ToString(CultureInfo.InvariantCulture));
             SetSetting(_DistributeContentEvenlySetting, DistributeContentEvenly.ToString(CultureInfo.InvariantCulture));
             SetSetting(_EnableContentResizingSetting, EnableContentResizing.ToString(CultureInfo.InvariantCulture));
+            SetSetting(_DisplayFbContentFromOthersSetting, DisplayFbContentFromOthers.ToString(CultureInfo.InvariantCulture));
 
             SetSetting(_MinFeedItemDateSetting, _MinFeedItemDate.ToString("MM/dd/yyyy", CultureInfo.InvariantCulture));
 
             SetSetting(_ItemTimeoutBackSetting, _ItemTimeoutBack.ToString().Trim());
             SetSetting(_FlickrPollIntervalSetting, _FlickrPollInterval.ToString().Trim());
             SetSetting(_TwitterPollIntervalSetting, _TwitterPollInterval.ToString().Trim());
+            SetSetting(_FacebookPollIntervalSetting, _FacebookPollInterval.ToString().Trim());
             SetSetting(_NewsPollIntervalSetting, _NewsPollInterval.ToString().Trim());
             SetSetting(_NewItemAlertSetting, _NewItemAlert.ToString().Trim());
             SetSetting(_AdminTimeoutDelaySetting, _AdminTimeoutDelay.ToString().Trim());
@@ -711,6 +810,23 @@ namespace SocialStream.ConfigTool.Model
 
             sb.Clear();
 
+            if (FacebookQueries.Count == 0)
+            {
+                SetSetting(_FacebookQuerySetting, string.Empty);
+            }
+            else
+            {
+                foreach (BindableStringVO query in FacebookQueries)
+                {
+                    sb.Append(query.StringValue);
+                    sb.Append(",");
+                }
+
+                SetSetting(_FacebookQuerySetting, sb.ToString().Substring(0, sb.ToString().Length - 1));
+            }
+
+            sb.Clear();
+
             if (FlickrBans.Count == 0)
             {
                 SetSetting(_FlickrBansSetting, string.Empty);
@@ -758,6 +874,23 @@ namespace SocialStream.ConfigTool.Model
                 }
 
                 SetSetting(_NewsBansSetting, sb.ToString().Substring(0, sb.ToString().Length - 1));
+            }
+
+            sb.Clear();
+
+            if (FacebookBans.Count == 0)
+            {
+                SetSetting(_FacebookBansSetting, string.Empty);
+            }
+            else
+            {
+                foreach (BindableStringVO query in FacebookBans)
+                {
+                    sb.Append(query.StringValue);
+                    sb.Append(",");
+                }
+
+                SetSetting(_FacebookBansSetting, sb.ToString().Substring(0, sb.ToString().Length - 1));
             }
 
             SetSetting(_FlickrApiKeySetting, FlickrApiKey);
@@ -812,27 +945,27 @@ namespace SocialStream.ConfigTool.Model
         #region Properties
 
         /// <summary>
-        /// Backing store for ThemeColorSetting.
+        /// Backing store for NewsThemeColorSetting.
         /// </summary>
-        private Color _ThemeColor = Color.FromArgb(255, 255, 189, 44);
+        private Color _NewsThemeColor = Color.FromArgb(255, 255, 189, 44);
 
         /// <summary>
-        /// Gets or sets the theme color.
+        /// Gets or sets the news background color.
         /// </summary>
         /// <value>
         /// <c>The color</c>.
         /// </value>
-        public Color ThemeColor
+        public Color NewsThemeColor
         {
             get
             {
-                return _ThemeColor;
+                return _NewsThemeColor;
             }
 
             set
             {
-                _ThemeColor = value;
-                NotifyPropertyChanged("ThemeColor");
+                _NewsThemeColor = value;
+                NotifyPropertyChanged("NewsThemeColor");
             }
         }
 
@@ -862,27 +995,101 @@ namespace SocialStream.ConfigTool.Model
         }
 
         /// <summary>
-        /// Backing store for ForegroundColorSetting.
+        /// Backing store for NewsForegroundColorSetting.
         /// </summary>
-        private Color _ForegroundColor = Color.FromArgb(255, 255, 189, 44);
+        private Color _NewsForegroundColor = Color.FromArgb(255, 255, 189, 44);
 
         /// <summary>
-        /// Gets or sets the Foreground color.
+        /// Gets or sets the News Foreground color.
         /// </summary>
         /// <value>
         /// <c>The color</c>.
         /// </value>
-        public Color ForegroundColor
+        public Color NewsForegroundColor
         {
             get
             {
-                return _ForegroundColor;
+                return _NewsForegroundColor;
             }
 
             set
             {
-                _ForegroundColor = value;
-                NotifyPropertyChanged("ForegroundColor");
+                _NewsForegroundColor = value;
+                NotifyPropertyChanged("NewsForegroundColor");
+            }
+        }
+
+        /// <summary>
+        /// Backing store for SocialThemeColorSetting.
+        /// </summary>
+        private Color _SocialThemeColor = Color.FromArgb(255, 255, 189, 44);
+
+        /// <summary>
+        /// Gets or sets the social background color.
+        /// </summary>
+        /// <value>
+        /// <c>The color</c>.
+        /// </value>
+        public Color SocialThemeColor
+        {
+            get
+            {
+                return _SocialThemeColor;
+            }
+
+            set
+            {
+                _SocialThemeColor = value;
+                NotifyPropertyChanged("SocialThemeColor");
+            }
+        }
+
+        /// <summary>
+        /// Backing store for SocialForegroundColorSetting.
+        /// </summary>
+        private Color _SocialForegroundColor = Color.FromArgb(255, 255, 189, 44);
+
+        /// <summary>
+        /// Gets or sets the Social Foreground color.
+        /// </summary>
+        /// <value>
+        /// <c>The color</c>.
+        /// </value>
+        public Color SocialForegroundColor
+        {
+            get
+            {
+                return _SocialForegroundColor;
+            }
+
+            set
+            {
+                _SocialForegroundColor = value;
+                NotifyPropertyChanged("SocialForegroundColor");
+            }
+        }
+
+        /// <summary>
+        /// Backing store for NewItemBorderColorSetting.
+        /// </summary>
+        private Color _NewItemBorderColor = Color.FromArgb(255, 255, 189, 44);
+
+        /// <summary>
+        /// Gets or sets the color for new item alert flash.
+        /// </summary>
+        /// <value>
+        /// The color.
+        /// </value>
+        public Color NewItemBorderColor
+        {
+            get
+            {
+                return _NewItemBorderColor;
+            }
+            set
+            {
+                _NewItemBorderColor = value;
+                NotifyPropertyChanged("NewItemBorderColor");
             }
         }
 
@@ -983,6 +1190,31 @@ namespace SocialStream.ConfigTool.Model
             {
                 _TwitterPollInterval = value;
                 NotifyPropertyChanged("TwitterPollInterval");
+            }
+        }
+
+        /// <summary>
+        /// Backing store for FacebookPollIntervalSetting.
+        /// </summary>
+        private TimeSpan _FacebookPollInterval = TimeSpan.FromMinutes(10);
+
+        /// <summary>
+        /// Gets or sets the Facebook poll interval.
+        /// </summary>
+        /// <value>
+        /// <c>The timespan value</c>.
+        /// </value>
+        public TimeSpan FacebookPollInterval
+        {
+            get
+            {
+                return _FacebookPollInterval;
+            }
+
+            set
+            {
+                _FacebookPollInterval = value;
+                NotifyPropertyChanged("FacebookPollInterval");
             }
         }
 
@@ -1138,6 +1370,25 @@ namespace SocialStream.ConfigTool.Model
             get
             {
                 return _NewsQueries;
+            }
+        }
+
+        /// <summary>
+        /// Backing store for FacebookQuerySetting.
+        /// </summary>
+        private IList<BindableStringVO> _FacebookQueries = new ObservableCollection<BindableStringVO>();
+
+        /// <summary>
+        /// Gets the comma-separated list of News queries.
+        /// </summary>
+        /// <value>
+        /// <c>a comma-separated query string</c>.
+        /// </value>
+        public IList<BindableStringVO> FacebookQueries
+        {
+            get
+            {
+                return _FacebookQueries;
             }
         }
 
@@ -1336,6 +1587,31 @@ namespace SocialStream.ConfigTool.Model
         }
 
         /// <summary>
+        /// Backing store for DisplayFbContentFromOthersSetting.
+        /// </summary>
+        private bool _DisplayFbContentFromOthers = true;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether or not content from other users on a facebook page is displayed.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if it is enabled, and if not, <c>false</c>.
+        /// </value>
+        public bool DisplayFbContentFromOthers
+        {
+            get
+            {
+                return _DisplayFbContentFromOthers;
+            }
+
+            set
+            {
+                _DisplayFbContentFromOthers = value;
+                NotifyPropertyChanged("DisplayFbContentFromOthers");
+            }
+        }
+
+        /// <summary>
         /// Backing store for AdminByteTagValueSetting.
         /// </summary>
         private long _AdminByteTagValue = 255;
@@ -1499,6 +1775,25 @@ namespace SocialStream.ConfigTool.Model
             get
             {
                 return _NewsBans;
+            }
+        }
+
+        /// <summary>
+        /// Backing store for FacebookBansSetting.
+        /// </summary>
+        private IList<BindableStringVO> _FacebookBans = new ObservableCollection<BindableStringVO>();
+
+        /// <summary>
+        /// Gets the comma-separated list of Facebook bans.
+        /// </summary>
+        /// <value>
+        /// <c>a comma-separated string of all items/users to ban</c>.
+        /// </value>
+        public IList<BindableStringVO> FacebookBans
+        {
+            get
+            {
+                return _FacebookBans;
             }
         }
 

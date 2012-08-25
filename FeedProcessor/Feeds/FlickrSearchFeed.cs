@@ -27,6 +27,11 @@ namespace FeedProcessor.Feeds
         private static Dictionary<string, string> _flickrUserNameCache = new Dictionary<string, string>();
 
         /// <summary>
+        /// A mapping of Flickr group ids to group names.
+        /// </summary>
+        private static Dictionary<string, string> _flickrGroupNameCache = new Dictionary<string, string>();
+
+        /// <summary>
         /// The format of photo page URIs.
         /// </summary>
         private const string SourceUriFormatString = "http://www.flickr.com/photos/{0}/{1}";
@@ -112,8 +117,10 @@ namespace FeedProcessor.Feeds
         /// Processes the response from the feed service.
         /// </summary>
         /// <param name="response">response from the feed service.</param>
-        internal override void ProcessResponse(string response)
+        internal override void ProcessResponse(object responseObject)
         {
+            string response = responseObject.ToString();
+
             if (response.Contains("<rsp stat=\"fail\">"))
             {
 #if DEBUG
@@ -137,24 +144,24 @@ namespace FeedProcessor.Feeds
                         SourceUriFormatString,
                         string.IsNullOrEmpty(node.Attribute("pathalias").Value) ? node.Attribute("owner").Value : node.Attribute("pathalias").Value,
                         node.Attribute("id").Value)),
-                    
+
                     Date = FlickrSearchFeed.ConvertFromUnixTimestamp(int.Parse(node.Attribute("dateupload").Value, CultureInfo.InvariantCulture)),
-                    
+
                     Author = HttpUtility.HtmlDecode(_flickrUserNameCache[node.Attribute("owner").Value]),
-                    
+
                     AvatarUri = new Uri(string.Format(
                         CultureInfo.InstalledUICulture,
                         AvatarUriFormatString,
                         node.Attribute("iconfarm").Value,
                         node.Attribute("iconserver").Value,
                         node.Attribute("owner").Value)),
-                    
+
                     SourceType = SourceType.Flickr,
-                    
+
                     Title = HttpUtility.HtmlDecode(node.Attribute("title").Value),
-                    
+
                     Caption = HttpUtility.HtmlDecode(StripHtml(node.Element("description") != null ? node.Element("description").Value : string.Empty)),
-                    
+
                     ThumbnailUri = new Uri(string.Format(
                         CultureInfo.InvariantCulture,
                         ThumbnailUriFormatString,
@@ -162,7 +169,7 @@ namespace FeedProcessor.Feeds
                         node.Attribute("server").Value,
                         node.Attribute("id").Value,
                         node.Attribute("secret").Value)),
-                    
+
                     ServiceId = node.Attribute("id").Value
                 };
 
@@ -221,6 +228,55 @@ namespace FeedProcessor.Feeds
                     string userid = XDocument.Parse(e.Response).Element("rsp").Element("user").Attribute("nsid").Value;
                     _flickrUserNameCache[userid] = username;
                     callback(userid);
+                }
+                catch
+                {
+                    callback(null);
+                }
+            };
+        }
+
+        #endregion
+
+        #region GetFlickrGroupIdFromGroupName
+
+        /// <summary>
+        /// Represents the method that is called when GetFlickrGroupIdFromGroupName completes.
+        /// </summary>
+        /// <param name="groupId">The group id.</param>
+        internal delegate void GetFlickrGroupIdFromGroupNameCallback(string groupId);
+
+        /// <summary>
+        /// Given a Flickr group name, return the group id.
+        /// </summary>
+        /// <param name="groupname">The group name.</param>
+        /// <param name="apiKey">The API key.</param>
+        /// <param name="callback">The callback.</param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "Yes, really want to catch all exceptions here.")]
+        internal static void GetFlickrGroupIdFromGroupName(string groupname, string apiKey, GetFlickrGroupIdFromGroupNameCallback callback)
+        {
+            if (_flickrGroupNameCache.ContainsValue(groupname))
+            {
+                callback((from kvp in _flickrGroupNameCache where kvp.Value == groupname select kvp.Key).FirstOrDefault());
+                return;
+            }
+
+            string groupurl = string.Format(CultureInfo.InvariantCulture, "http://www.flickr.com/groups/{0}", groupname);
+            string query = string.Format(CultureInfo.InvariantCulture, "http://api.flickr.com/services/rest/?method=flickr.urls.lookupGroup&api_key={0}&url={1}", apiKey, groupurl);
+            AsyncWebRequest request = new AsyncWebRequest();
+            request.Request(new Uri(query));
+            request.Result += (sender, e) =>
+            {
+                if (e.Status != HttpStatusCode.OK)
+                {
+                    callback(null);
+                }
+
+                try
+                {
+                    string groupid = XDocument.Parse(e.Response).Element("rsp").Element("group").Attribute("id").Value;
+                    _flickrUserNameCache[groupid] = groupname;
+                    callback(groupid);
                 }
                 catch
                 {

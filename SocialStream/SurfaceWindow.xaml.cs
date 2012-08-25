@@ -1,12 +1,12 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Windows;
 using System.Windows.Media.Animation;
 using Blake.NUI.WPF.Touch;
 using Microsoft.Surface;
 using SocialStream.Helpers;
 using SocialStream.Properties;
+using System.Windows;
 
 namespace SocialStream
 {
@@ -45,8 +45,11 @@ namespace SocialStream
             }
 
             // Add the configuable color resources.
-            Resources["ThemeColor"] = Settings.Default.ThemeColor;
-            Resources["ForegroundColor"] = Settings.Default.ForegroundColor;
+            Resources["NewsThemeColor"] = Settings.Default.NewsThemeColor;
+            Resources["NewsForegroundColor"] = Settings.Default.NewsForegroundColor;
+            Resources["SocialThemeColor"] = Settings.Default.SocialThemeColor;
+            Resources["SocialForegroundColor"] = Settings.Default.SocialForegroundColor;
+            Resources["NewItemBorderColor"] = Settings.Default.NewItemBorderColor;
 
             // Don't put all the binding errors in the output window
             PresentationTraceSources.DataBindingSource.Switch.Level = SourceLevels.Critical;

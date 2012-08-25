@@ -79,13 +79,13 @@
 
         <Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundB}" Margin="0,0,0,10">
           <StackPanel>
-            <TextBlock Text="{x:Static props:Resources.ThemeColorGroupTitle}" Style="{DynamicResource GroupTitle}" />
-            <TextBlock Text="{x:Static props:Resources.ThemeColorGroupDescription}" Style="{DynamicResource GroupDescription}" />
+            <TextBlock Text="{x:Static props:Resources.NewsThemeColorGroupTitle}" Style="{DynamicResource GroupTitle}" />
+            <TextBlock Text="{x:Static props:Resources.NewsThemeColorGroupDescription}" Style="{DynamicResource GroupDescription}" />
 
             <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-              <TextBox MaxLength="9" Width="100" x:Name="_ThemeColor" x:FieldModifier="private">
+              <TextBox MaxLength="9" Width="100" x:Name="_NewsThemeColor" x:FieldModifier="private">
                 <TextBox.Text>
-                  <Binding Path="ThemeColor" UpdateSourceTrigger="PropertyChanged">
+                  <Binding Path="NewsThemeColor" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                       <validators:IsValidHexColorRule />
                     </Binding.ValidationRules>
@@ -94,7 +94,7 @@
               </TextBox>
               <Border Height="33" Width="33" Margin="10,0,0,0" BorderBrush="#FF666666" BorderThickness="1">
                 <Border.Background>
-                  <SolidColorBrush Color="{Binding ElementName=_ThemeColor, Path=Text}" />
+                  <SolidColorBrush Color="{Binding ElementName=_NewsThemeColor, Path=Text}" />
                 </Border.Background>
               </Border>
             </StackPanel>
@@ -104,13 +104,13 @@
 
         <Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundA}" Margin="0,0,0,10">
           <StackPanel>
-            <TextBlock Text="{x:Static props:Resources.ForegroundColorGroupTitle}" Style="{DynamicResource GroupTitle}" />
-            <TextBlock Text="{x:Static props:Resources.ForegroundColorGroupDescription}" Style="{DynamicResource GroupDescription}" />
+            <TextBlock Text="{x:Static props:Resources.NewsForegroundColorGroupTitle}" Style="{DynamicResource GroupTitle}" />
+            <TextBlock Text="{x:Static props:Resources.NewsForegroundColorGroupDescription}" Style="{DynamicResource GroupDescription}" />
 
             <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-              <TextBox MaxLength="9" Width="100" x:Name="_ForegroundColor" x:FieldModifier="private">
+              <TextBox MaxLength="9" Width="100" x:Name="_NewsForegroundColor" x:FieldModifier="private">
                 <TextBox.Text>
-                  <Binding Path="ForegroundColor" UpdateSourceTrigger="PropertyChanged">
+                  <Binding Path="NewsForegroundColor" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
                       <validators:IsValidHexColorRule />
                     </Binding.ValidationRules>
@@ -119,7 +119,79 @@
               </TextBox>
               <Border Height="33" Width="33" Margin="10,0,0,0" BorderBrush="#FF666666" BorderThickness="1">
                 <Border.Background>
-                  <SolidColorBrush Color="{Binding ElementName=_ForegroundColor, Path=Text}" />
+                  <SolidColorBrush Color="{Binding ElementName=_NewsForegroundColor, Path=Text}" />
+                </Border.Background>
+              </Border>
+            </StackPanel>
+
+          </StackPanel>
+        </Border>
+		
+		<Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundB}" Margin="0,0,0,10">
+          <StackPanel>
+            <TextBlock Text="{x:Static props:Resources.SocialThemeColorGroupTitle}" Style="{DynamicResource GroupTitle}" />
+            <TextBlock Text="{x:Static props:Resources.SocialThemeColorGroupDescription}" Style="{DynamicResource GroupDescription}" />
+
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+              <TextBox MaxLength="9" Width="100" x:Name="_SocialThemeColor" x:FieldModifier="private">
+                <TextBox.Text>
+                  <Binding Path="SocialThemeColor" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                      <validators:IsValidHexColorRule />
+                    </Binding.ValidationRules>
+                  </Binding>
+                </TextBox.Text>
+              </TextBox>
+              <Border Height="33" Width="33" Margin="10,0,0,0" BorderBrush="#FF666666" BorderThickness="1">
+                <Border.Background>
+                  <SolidColorBrush Color="{Binding ElementName=_SocialThemeColor, Path=Text}" />
+                </Border.Background>
+              </Border>
+            </StackPanel>
+
+          </StackPanel>
+        </Border>
+        <Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundA}" Margin="0,0,0,10">
+        	<StackPanel>
+        		<TextBlock Text="{x:Static props:Resources.SocialForegroundColorGroupTitle}" Style="{DynamicResource GroupTitle}" />
+        		<TextBlock Text="{x:Static props:Resources.SocialForegroundColorGroupDescription}" Style="{DynamicResource GroupDescription}" />
+
+        		<StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+        			<TextBox MaxLength="9" Width="100" x:Name="_SocialForegroundColor" x:FieldModifier="private">
+        				<Binding Path="SocialForegroundColor" UpdateSourceTrigger="PropertyChanged">
+        					<Binding.ValidationRules>
+        						<validators:IsValidHexColorRule />
+        					</Binding.ValidationRules>
+        				</Binding>
+        			</TextBox>
+        			<Border Height="33" Width="33" Margin="10,0,0,0" BorderBrush="#FF666666" BorderThickness="1">
+        				<Border.Background>
+        					<SolidColorBrush Color="{Binding ElementName=_SocialForegroundColor, Path=Text}" />
+        				</Border.Background>
+        			</Border>
+        		</StackPanel>
+
+        	</StackPanel>
+        </Border>
+
+        <Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundB}" Margin="0,0,0,10">
+          <StackPanel>
+            <TextBlock Text="{x:Static props:Resources.NewItemBorderColorGroupTitle}" Style="{DynamicResource GroupTitle}" />
+            <TextBlock Text="{x:Static props:Resources.NewItemBorderColorGroupDescription}" Style="{DynamicResource GroupDescription}" />
+
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+              <TextBox MaxLength="9" Width="100" x:Name="_NewItemBorderColor" x:FieldModifier="private">
+                <TextBox.Text>
+                  <Binding Path="NewItemBorderColor" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                      <validators:IsValidHexColorRule />
+                    </Binding.ValidationRules>
+                  </Binding>
+                </TextBox.Text>
+              </TextBox>
+              <Border Height="33" Width="33" Margin="10,0,0,0" BorderBrush="#FF666666" BorderThickness="1">
+                <Border.Background>
+                  <SolidColorBrush Color="{Binding ElementName=_NewItemBorderColor, Path=Text}" />
                 </Border.Background>
               </Border>
             </StackPanel>
@@ -127,7 +199,7 @@
           </StackPanel>
         </Border>
 
-        <Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundB}" Margin="0,0,0,10">
+        <Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundA}" Margin="0,0,0,10">
           <StackPanel>
             <TextBlock Text="{x:Static props:Resources.ImageSizeGroupTitle}" Style="{DynamicResource GroupTitle}" />
             <TextBlock Text="{x:Static props:Resources.ImageSizeGroupDescription}" Style="{DynamicResource GroupDescription}" />
@@ -165,7 +237,7 @@
           </StackPanel>
         </Border>
 
-        <Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundA}" Margin="0,0,0,10">
+        <Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundB}" Margin="0,0,0,10">
           <StackPanel>
             <TextBlock Text="{x:Static props:Resources.NewsSizeGroupTitle}" Style="{DynamicResource GroupTitle}" />
             <TextBlock Text="{x:Static props:Resources.NewsSizeGroupDescription}" Style="{DynamicResource GroupDescription}" />
@@ -203,7 +275,7 @@
           </StackPanel>
         </Border>
 
-        <Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundB}" Margin="0,0,0,10">
+        <Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundA}" Margin="0,0,0,10">
           <StackPanel>
             <TextBlock Text="{x:Static props:Resources.StatusSizeGroupTitle}" Style="{DynamicResource GroupTitle}" />
             <TextBlock Text="{x:Static props:Resources.StatusSizeGroupDescription}" Style="{DynamicResource GroupDescription}" />
@@ -241,7 +313,7 @@
           </StackPanel>
         </Border>
 
-        <Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundA}" Margin="0,0,0,10">
+        <Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundB}" Margin="0,0,0,10">
           <StackPanel>
             <TextBlock Text="{x:Static props:Resources.TweetOpacityGroupTitle}" Style="{DynamicResource GroupTitle}" />
             <TextBlock Text="{x:Static props:Resources.TweetOpacityGroupDescription}" Style="{DynamicResource GroupDescription}" />
@@ -258,7 +330,7 @@
           </StackPanel>
         </Border>
 
-        <Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundB}" Margin="0,0,0,10">
+        <Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundA}" Margin="0,0,0,10">
           <StackPanel>
             <TextBlock Text="{x:Static props:Resources.NewsOpacityGroupTitle}" Style="{DynamicResource GroupTitle}" />
             <TextBlock Text="{x:Static props:Resources.NewsOpacityGroupDescription}" Style="{DynamicResource GroupDescription}" />
@@ -275,7 +347,7 @@
           </StackPanel>
         </Border>
 
-        <Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundA}" Margin="0,0,0,10">
+        <Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundB}" Margin="0,0,0,10">
           <StackPanel>
             <TextBlock Text="{x:Static props:Resources.NewItemAlertGroupTitle}" Style="{DynamicResource GroupTitle}" />
             <TextBlock Text="{x:Static props:Resources.NewItemAlertGroupDescription}" Style="{DynamicResource GroupDescription}" />
@@ -292,7 +364,7 @@
           </StackPanel>
         </Border>
 
-        <Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundB}" Margin="0">
+        <Border Style="{DynamicResource SettingBackgroundStyle}" Background="{DynamicResource SettingBackgroundA}" Margin="0">
           <StackPanel>
             <TextBlock Text="{x:Static props:Resources.BackgroundImagesGroupTitle}" Style="{DynamicResource GroupTitle}" />
             <TextBlock Text="{x:Static props:Resources.BackgroundImagesGroupDescription}" Style="{DynamicResource GroupDescription}" />
